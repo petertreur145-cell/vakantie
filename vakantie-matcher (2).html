@@ -345,9 +345,19 @@ async function getCityPhotos(city) {
 
     // Pick 3 spread-out photos for visual variety
     const indices = n >= 3 ? [0, Math.floor(n*0.4), Math.floor(n*0.75)] : [0,1,2].slice(0,n);
-    const urls = indices.map(i =>
-      `https://places.googleapis.com/v1/${photos[i].name}/media?maxWidthPx=1400&maxHeightPx=900&skipHttpRedirect=true&key=${GKEY}`
-    );
+    // Fetch actual photo URIs (skipHttpRedirect returns JSON with photoUri)
+    const urlPromises = indices.map(async i => {
+      try {
+        const mediaResp = await fetch(
+          `https://places.googleapis.com/v1/${photos[i].name}/media?maxWidthPx=1400&maxHeightPx=900&skipHttpRedirect=true&key=${GKEY}`,
+          { signal: AbortSignal.timeout(6000) }
+        );
+        if (!mediaResp.ok) return null;
+        const mediaData = await mediaResp.json();
+        return mediaData.photoUri || null;
+      } catch(e) { return null; }
+    });
+    const urls = (await Promise.all(urlPromises)).filter(Boolean);
     photoCache[city.id] = urls;
     return urls;
   } catch(e) { return []; }
