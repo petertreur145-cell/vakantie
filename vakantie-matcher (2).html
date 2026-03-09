@@ -10,11 +10,9 @@
 <style>
 :root{--sand:#F0E6D3;--terra:#C05A30;--terra2:#A04525;--deep:#12100E;--deep2:#1C1713;--gold:#D4A030;--muted:#7A6E63;--border:rgba(255,255,255,0.08);}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
-body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);min-height:100vh;overflow-x:hidden;}
-.screen{display:none;min-height:100vh;}
+body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);min-height:100vh;min-height:100dvh;overflow-x:hidden;}
+.screen{display:none;min-height:100vh;min-height:100dvh;}
 .screen.active{display:flex;flex-direction:column;}
-
-/* HERO */
 #s-hero{align-items:center;justify-content:center;text-align:center;padding:2rem;
   background:radial-gradient(ellipse at 25% 20%,rgba(192,90,48,.18) 0%,transparent 55%),
              radial-gradient(ellipse at 75% 80%,rgba(30,107,122,.15) 0%,transparent 55%),var(--deep);}
@@ -23,10 +21,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);m
 .hero-title em{color:var(--gold);font-style:italic;}
 .hero-sub{font-size:1rem;color:var(--muted);max-width:380px;line-height:1.65;margin:1.5rem auto 2.5rem;}
 .deco-line{width:50px;height:1px;background:var(--terra);margin:.8rem auto;}
-.btn-primary{background:var(--terra);color:#fff;border:none;padding:.9rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;letter-spacing:.06em;transition:all .3s;}
+.btn-primary{background:var(--terra);color:#fff;border:none;padding:.9rem 2.5rem;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;cursor:pointer;letter-spacing:.06em;transition:all .3s;border-radius:4px;}
 .btn-primary:hover{background:var(--terra2);transform:translateY(-2px);}
-
-/* QUESTIONS */
 #s-questions{justify-content:center;padding:2rem 1.5rem;}
 .q-wrap{max-width:580px;margin:0 auto;width:100%;}
 .progress-bar{height:2px;background:rgba(255,255,255,.1);margin-bottom:2rem;}
@@ -36,160 +32,115 @@ body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);m
 .q-sub{font-size:.85rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.5;}
 .multi-hint{font-size:.72rem;color:var(--gold);margin-bottom:1rem;letter-spacing:.05em;}
 .options-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem;}
-.opt-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--muted);
-  padding:.65rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;gap:.45rem;}
+.opt-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:var(--muted);padding:.65rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.45rem;border-radius:4px;}
 .opt-btn:hover{border-color:var(--gold);color:var(--sand);}
 .opt-btn.selected{background:var(--terra);border-color:var(--terra);color:#fff;}
 .q-nav{display:flex;justify-content:space-between;align-items:center;gap:.5rem;flex-wrap:wrap;}
-.btn-back{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--muted);
-  padding:.55rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;}
-.btn-back:hover{border-color:rgba(255,255,255,.3);color:var(--sand);}
-.btn-next{background:var(--terra);color:#fff;border:none;padding:.65rem 1.8rem;
-  font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .2s;}
+.btn-back{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:.55rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;border-radius:4px;}
+.btn-next{background:var(--terra);color:#fff;border:none;padding:.65rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .2s;border-radius:4px;}
 .btn-next:disabled{opacity:.35;cursor:not-allowed;}
-.btn-skip-to-swipe{background:transparent;border:1px solid rgba(212,160,48,.3);color:var(--gold);
-  padding:.55rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.78rem;cursor:pointer;transition:all .2s;}
-.btn-skip-to-swipe:hover{border-color:var(--gold);background:rgba(212,160,48,.08);}
+.btn-skip-to-swipe{background:transparent;border:1px solid rgba(212,160,48,.3);color:var(--gold);padding:.55rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.78rem;cursor:pointer;transition:all .2s;border-radius:4px;}
 @media(max-width:500px){.options-grid{flex-direction:column;}.opt-btn{width:100%;}}
-
-/* SWIPE */
-#s-swipe{align-items:center;justify-content:flex-start;padding:1.2rem 1rem;
-  background:radial-gradient(ellipse at center,rgba(30,107,122,.1) 0%,transparent 70%),var(--deep);}
-.swipe-header{text-align:center;margin-bottom:.8rem;width:100%;}
-.swipe-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,5vw,1.7rem);}
-.swipe-header p{font-size:.78rem;color:var(--muted);margin-top:.2rem;}
-.swipe-progress{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-top:.2rem;}
-
-/* HORIZONTAL card — 16:9 ratio */
-.swipe-stage{position:relative;width:100%;max-width:560px;margin:0 auto;}
-.swipe-card{position:relative;width:100%;padding-top:56.25%;overflow:hidden;cursor:grab;
-  user-select:none;touch-action:none;box-shadow:0 16px 50px rgba(0,0,0,.6);}
+#s-swipe{align-items:center;justify-content:flex-start;padding:.5rem .5rem 0;background:var(--deep);}
+.swipe-header{text-align:center;margin-bottom:.4rem;width:100%;}
+.swipe-header h2{font-family:'Playfair Display',serif;font-size:clamp(1.1rem,4vw,1.4rem);}
+.swipe-header p{font-size:.7rem;color:var(--muted);margin-top:.1rem;}
+.swipe-progress{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-top:.1rem;}
+.round-info{display:inline-block;background:rgba(192,90,48,.15);border:1px solid rgba(192,90,48,.3);color:var(--terra);padding:.15rem .5rem;font-size:.62rem;letter-spacing:.08em;margin-top:.2rem;border-radius:3px;}
+.swipe-stage{position:relative;width:100%;max-width:min(95vw, 500px);margin:0 auto;flex-grow:1;display:flex;align-items:center;justify-content:center;padding: .5rem 0;}
+.swipe-card{position:relative;width:auto;height:100%;aspect-ratio:9/16;max-width:100%;overflow:hidden;cursor:grab;user-select:none;touch-action:none;box-shadow:0 16px 50px rgba(0,0,0,.6);border-radius:14px;}
 .swipe-card.animating{pointer-events:none;}
-.swipe-card.out-left{animation:swipeL .32s ease forwards;}
-.swipe-card.out-right{animation:swipeR .32s ease forwards;}
-@keyframes swipeL{to{transform:translateX(-130%) rotate(-15deg);opacity:0;}}
-@keyframes swipeR{to{transform:translateX(130%) rotate(15deg);opacity:0;}}
+.swipe-card.out-left{animation:swipeL .3s ease forwards;}
+.swipe-card.out-right{animation:swipeR .3s ease forwards;}
+@keyframes swipeL{to{transform:translateX(-130%) rotate(-14deg);opacity:0;}}
+@keyframes swipeR{to{transform:translateX(130%) rotate(14deg);opacity:0;}}
 .card-inner{position:absolute;inset:0;}
-.card-bg{position:absolute;inset:0;background:var(--deep2);}
-.card-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;}
-.card-photo.loaded{opacity:.9;}
-.card-emoji-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:4rem;background:linear-gradient(135deg,rgba(30,107,122,.4),rgba(192,90,48,.3));}
-.photo-badge{position:absolute;top:.6rem;left:.6rem;background:rgba(18,16,14,.85);
-  border:1px solid rgba(255,255,255,.15);color:var(--gold);padding:.2rem .55rem;
-  font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;}
-.card-overlay{position:absolute;bottom:0;left:0;right:0;
-  background:linear-gradient(transparent 0%,rgba(0,0,0,.7) 50%,rgba(0,0,0,.92) 100%);
-  padding:1.2rem 1rem .8rem;}
-.card-vibe{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;}
-.card-desc{font-size:.82rem;color:rgba(255,255,255,.85);line-height:1.4;}
-.like-ov,.nope-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  pointer-events:none;opacity:0;transition:opacity .1s;}
-.like-ov{background:rgba(50,180,80,.15);}
-.nope-ov{background:rgba(220,50,50,.15);}
+.card-bg{position:absolute;inset:0;background:var(--deep2);border-radius:14px;}
+.card-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s;border-radius:14px;}
+.card-photo.loaded{opacity:1;}
+.card-emoji-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:5rem;background:linear-gradient(135deg,rgba(30,107,122,.4),rgba(192,90,48,.3));border-radius:14px;}
+.photo-badge{position:absolute;top:.8rem;left:.8rem;background:rgba(18,16,14,.85);border:1px solid rgba(255,255,255,.15);color:var(--gold);padding:.25rem .65rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border-radius:6px;}
+.card-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent 0%,rgba(0,0,0,.5) 35%,rgba(0,0,0,.9) 100%);padding:2.5rem 1.2rem 1.2rem;border-radius:0 0 14px 14px;}
+.card-vibe{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.card-desc{font-size:.88rem;color:rgba(255,255,255,.92);line-height:1.45;}
+.like-ov,.nope-ov{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0;transition:opacity .1s;border-radius:14px;}
+.like-ov{background:rgba(50,180,80,.18);}
+.nope-ov{background:rgba(220,50,50,.18);}
 .like-ov.show,.nope-ov.show{opacity:1;}
-.like-lbl,.nope-lbl{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;
-  padding:.35rem .8rem;border:3px solid;border-radius:3px;}
+.like-lbl,.nope-lbl{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;padding:.4rem 1rem;border:3px solid;border-radius:6px;transform:rotate(-15deg);}
+.nope-lbl{transform:rotate(15deg);}
 .like-lbl{color:#4fc97a;border-color:#4fc97a;}
 .nope-lbl{color:#e05050;border-color:#e05050;}
-.swipe-btns{display:flex;gap:1.2rem;margin-top:.9rem;justify-content:center;}
-.swipe-btn{width:54px;height:54px;border-radius:50%;border:none;font-size:1.3rem;cursor:pointer;
-  transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.swipe-btns{display:flex;gap:1.2rem;margin-top:.5rem;justify-content:center;}
+.swipe-btn{width:56px;height:56px;border-radius:50%;border:none;font-size:1.4rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
 .swipe-btn.skip{background:rgba(220,60,60,.1);border:2px solid rgba(220,60,60,.3);}
-.swipe-btn.skip:hover{background:rgba(220,60,60,.25);}
 .swipe-btn.like{background:rgba(79,201,122,.1);border:2px solid rgba(79,201,122,.3);}
-.swipe-btn.like:hover{background:rgba(79,201,122,.25);}
-.swipe-hint{font-size:.68rem;color:var(--muted);text-align:center;margin-top:.4rem;}
-
-/* LOADING */
+.swipe-hint{font-size:.58rem;color:var(--muted);text-align:center;margin-top:.25rem;}
+#s-round{align-items:center;justify-content:center;text-align:center;padding:3rem;}
+#s-round h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,5vw,2.2rem);margin-bottom:.5rem;}
+.round-stats{font-size:.9rem;color:var(--muted);margin-bottom:1.5rem;line-height:1.6;}
+.eliminated-list{max-width:400px;margin:0 auto 1.5rem;text-align:left;}
+.elim-city{display:flex;align-items:center;gap:.5rem;padding:.3rem 0;font-size:.82rem;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.05);}
+.elim-city .x{color:#e05050;font-weight:600;}
+.survived-count{font-size:1.1rem;color:var(--gold);font-weight:500;margin-bottom:1.5rem;}
 #s-loading{align-items:center;justify-content:center;text-align:center;padding:3rem;}
-.spin{width:44px;height:44px;border:2px solid rgba(255,255,255,.08);border-top-color:var(--terra);
-  border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1.2rem;}
+.spin{width:44px;height:44px;border:2px solid rgba(255,255,255,.08);border-top-color:var(--terra);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 1.2rem;}
 @keyframes spin{to{transform:rotate(360deg);}}
 #s-loading h3{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.3rem;}
-
-/* RESULTS */
 #s-results{padding:1.2rem;}
 .results-top{text-align:center;padding:1.5rem 0 .8rem;max-width:1100px;margin:0 auto;}
 .results-top h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,5vw,2.5rem);margin-bottom:.3rem;}
-.verdict{background:rgba(192,90,48,.08);border:1px solid rgba(192,90,48,.2);padding:.65rem 1rem;
-  max-width:700px;margin:.6rem auto 0;font-size:.8rem;color:rgba(240,230,211,.7);line-height:1.5;}
-#map{width:100%;max-width:1100px;height:340px;margin:1.2rem auto;border:1px solid var(--border);display:block;}
-.results-grid{max-width:1100px;margin:0 auto;display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;padding-bottom:3rem;}
+.verdict{background:rgba(192,90,48,.08);border:1px solid rgba(192,90,48,.2);padding:.65rem 1rem;max-width:700px;margin:.6rem auto 0;font-size:.8rem;color:rgba(240,230,211,.7);line-height:1.5;border-radius:4px;}
+#map{width:100%;max-width:1100px;height:340px;margin:1.2rem auto;border:1px solid var(--border);}
+.results-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;padding-bottom:3rem;}
 @media(max-width:600px){.results-grid{grid-template-columns:1fr;}}
-.city-card{background:rgba(255,255,255,.04);border:1px solid var(--border);overflow:hidden;
-  cursor:pointer;transition:all .3s;animation:fadeUp .5s ease forwards;opacity:0;}
+.city-card{background:rgba(255,255,255,.04);border:1px solid var(--border);overflow:hidden;cursor:pointer;transition:all .3s;animation:fadeUp .5s ease forwards;opacity:0;border-radius:8px;}
 .city-card:hover{border-color:rgba(192,90,48,.4);transform:translateY(-3px);}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
-.city-card:nth-child(1){animation-delay:.05s;}.city-card:nth-child(2){animation-delay:.1s;}
-.city-card:nth-child(3){animation-delay:.15s;}.city-card:nth-child(4){animation-delay:.2s;}
-.city-card:nth-child(5){animation-delay:.25s;}.city-card:nth-child(6){animation-delay:.3s;}
-/* Horizontal card image — 16:9 */
-.ccard-img{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--deep2);}
-.ccard-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:3rem;background:linear-gradient(135deg,rgba(30,107,122,.35),rgba(192,90,48,.2));}
-.ccard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-  opacity:0;transition:opacity .4s,transform .5s;}
+.city-card:nth-child(1){animation-delay:.05s;}.city-card:nth-child(2){animation-delay:.1s;}.city-card:nth-child(3){animation-delay:.15s;}.city-card:nth-child(4){animation-delay:.2s;}
+.ccard-img{position:relative;width:100%;padding-top:65%;overflow:hidden;background:var(--deep2);}
+.ccard-img-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,rgba(30,107,122,.35),rgba(192,90,48,.2));}
+.ccard-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s,transform .5s;}
 .city-card:hover .ccard-img img{transform:scale(1.04);}
 .ccard-img img.loaded{opacity:.88;}
-.card-rank{position:absolute;top:.6rem;left:.6rem;background:rgba(18,16,14,.9);color:var(--gold);
-  font-family:'Playfair Display',serif;width:26px;height:26px;display:flex;align-items:center;
-  justify-content:center;font-size:.85rem;border:1px solid rgba(212,160,48,.3);}
-.card-score{position:absolute;top:.6rem;right:.6rem;background:var(--terra);color:#fff;
-  padding:.15rem .5rem;font-size:.7rem;font-weight:600;}
-.card-liked{position:absolute;bottom:.6rem;right:.6rem;font-size:.9rem;}
+.card-rank{position:absolute;top:.6rem;left:.6rem;background:rgba(18,16,14,.9);color:var(--gold);font-family:'Playfair Display',serif;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.85rem;border:1px solid rgba(212,160,48,.3);border-radius:4px;}
+.card-score{position:absolute;top:.6rem;right:.6rem;background:var(--terra);color:#fff;padding:.15rem .5rem;font-size:.72rem;font-weight:600;border-radius:4px;}
+.card-liked{position:absolute;bottom:.6rem;right:.6rem;font-size:.75rem;background:rgba(0,0,0,.7);padding:.15rem .4rem;border-radius:3px;}
 .ccard-body{padding:.9rem;}
 .ccard-country{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;}
 .ccard-name{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.4rem;}
 .ccard-desc{font-size:.8rem;color:var(--muted);line-height:1.5;margin-bottom:.7rem;}
-.ccard-stats{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding-top:.6rem;
-  border-top:1px solid rgba(255,255,255,.06);}
+.ccard-stats{display:grid;grid-template-columns:1fr 1fr;gap:.3rem;padding-top:.6rem;border-top:1px solid rgba(255,255,255,.06);}
 .stat{font-size:.68rem;color:var(--muted);}.stat b{color:var(--sand);font-weight:500;}
 .again-wrap{text-align:center;padding:.5rem 0 3rem;max-width:1100px;margin:0 auto;}
-.btn-again{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--muted);
-  padding:.6rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;transition:all .3s;}
-.btn-again:hover{border-color:var(--terra);color:var(--sand);}
-
-/* MODAL */
+.btn-again{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--muted);padding:.6rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:.85rem;cursor:pointer;border-radius:4px;}
 #modal{position:fixed;inset:0;z-index:9999;display:none;align-items:flex-end;}
 #modal.open{display:flex;}
 .modal-bd{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);}
-.modal-box{position:relative;z-index:1;background:var(--deep2);width:100%;max-width:680px;
-  margin:0 auto;max-height:92vh;overflow-y:auto;border-top:1px solid var(--border);}
-@media(min-width:700px){#modal{align-items:center;}.modal-box{border:1px solid var(--border);margin:2rem auto;max-height:88vh;}}
-/* Gallery horizontal */
+.modal-box{position:relative;z-index:1;background:var(--deep2);width:100%;max-width:680px;margin:0 auto;max-height:92vh;overflow-y:auto;border-top:1px solid var(--border);}
+@media(min-width:700px){#modal{align-items:center;}.modal-box{border:1px solid var(--border);margin:2rem auto;max-height:88vh;border-radius:8px;}}
 .modal-gallery{position:relative;width:100%;padding-top:56.25%;overflow:hidden;background:var(--deep);}
 .gallery-slides{position:absolute;inset:0;display:flex;transition:transform .38s ease;}
 .gallery-slide{min-width:100%;height:100%;position:relative;flex-shrink:0;}
 .gallery-slide img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .4s;}
 .gallery-slide img.loaded{opacity:.92;}
-.slide-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:3.5rem;background:linear-gradient(135deg,rgba(30,107,122,.4),rgba(192,90,48,.25));}
-.gallery-lbl{position:absolute;bottom:.6rem;left:.7rem;background:rgba(18,16,14,.8);
-  color:var(--gold);padding:.18rem .55rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;}
+.slide-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:linear-gradient(135deg,rgba(30,107,122,.4),rgba(192,90,48,.25));}
+.gallery-lbl{position:absolute;bottom:.6rem;left:.7rem;background:rgba(18,16,14,.8);color:var(--gold);padding:.18rem .55rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;border-radius:3px;}
 .gallery-dots{position:absolute;bottom:.6rem;right:.7rem;display:flex;gap:.35rem;}
-.gallery-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:background .2s;}
+.gallery-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;}
 .gallery-dot.active{background:var(--terra);}
-.g-prev,.g-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);
-  border:none;color:#fff;width:32px;height:32px;cursor:pointer;font-size:1rem;
-  display:flex;align-items:center;justify-content:center;transition:background .2s;}
-.g-prev:hover,.g-next:hover{background:rgba(192,90,48,.7);}
+.g-prev,.g-next{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,.5);border:none;color:#fff;width:32px;height:32px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;border-radius:50%;}
 .g-prev{left:.4rem;}.g-next{right:.4rem;}
-.modal-close{position:absolute;top:.7rem;right:.7rem;z-index:2;background:rgba(0,0,0,.6);
-  color:var(--sand);border:none;width:32px;height:32px;font-size:1.1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;}
+.modal-close{position:absolute;top:.7rem;right:.7rem;z-index:2;background:rgba(0,0,0,.6);color:var(--sand);border:none;width:32px;height:32px;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:50%;}
 .modal-body{padding:1.3rem;}
 .modal-flag{font-size:1.1rem;margin-bottom:.2rem;}
 .modal-country{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);}
 .modal-name{font-family:'Playfair Display',serif;font-size:1.9rem;margin:.25rem 0 .5rem;}
-.modal-like{display:inline-block;background:rgba(79,201,122,.12);border:1px solid rgba(79,201,122,.3);
-  color:#4fc97a;padding:.15rem .55rem;font-size:.7rem;margin-bottom:.7rem;}
+.modal-like{display:inline-block;background:rgba(79,201,122,.12);border:1px solid rgba(79,201,122,.3);color:#4fc97a;padding:.15rem .55rem;font-size:.7rem;margin-bottom:.7rem;border-radius:3px;}
 .modal-desc{font-size:.88rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem;}
 .mstats{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.2rem;}
 @media(max-width:460px){.mstats{grid-template-columns:1fr;}}
-.mstat{background:rgba(255,255,255,.03);border:1px solid var(--border);padding:.7rem;}
+.mstat{background:rgba(255,255,255,.03);border:1px solid var(--border);padding:.7rem;border-radius:4px;}
 .mstat-label{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);margin-bottom:.25rem;}
 .mstat-val{font-size:.92rem;color:var(--sand);font-weight:500;}
 .mstat-sub{font-size:.68rem;color:var(--muted);margin-top:.12rem;}
@@ -197,37 +148,29 @@ body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);m
 .msection{margin-bottom:1rem;}
 .msection h4{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:.45rem;}
 .btags{display:flex;flex-wrap:wrap;gap:.3rem;}
-.btag{background:rgba(30,107,122,.15);border:1px solid rgba(30,107,122,.3);
-  color:rgba(240,230,211,.8);padding:.18rem .55rem;font-size:.72rem;}
+.btag{background:rgba(30,107,122,.15);border:1px solid rgba(30,107,122,.3);color:rgba(240,230,211,.8);padding:.18rem .55rem;font-size:.72rem;border-radius:3px;}
 .known-list{list-style:none;display:flex;flex-direction:column;gap:.25rem;}
 .known-list li{font-size:.83rem;color:var(--muted);padding-left:.9rem;position:relative;}
 .known-list li::before{content:'→';position:absolute;left:0;color:var(--terra);}
-.dutch-bar{height:4px;background:rgba(255,255,255,.08);margin-top:.35rem;}
-.dutch-fill{height:100%;background:var(--terra);transition:width .6s ease;}
-.tips-box{background:rgba(212,160,48,.06);border:1px solid rgba(212,160,48,.2);
-  padding:.8rem;font-size:.82rem;color:rgba(240,230,211,.75);line-height:1.55;}
+.dutch-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:.35rem;}
+.dutch-fill{height:100%;background:var(--terra);border-radius:2px;}
+.tips-box{background:rgba(212,160,48,.06);border:1px solid rgba(212,160,48,.2);padding:.8rem;font-size:.82rem;color:rgba(240,230,211,.75);line-height:1.55;border-radius:4px;}
 .cost-pips{display:flex;gap:.25rem;margin-top:.3rem;}
-.cost-pip{width:20px;height:6px;background:rgba(255,255,255,.1);}
+.cost-pip{width:20px;height:6px;background:rgba(255,255,255,.1);border-radius:2px;}
 .cost-pip.on{background:var(--gold);}
-
-/* Leaflet */
-.leaflet-popup-content-wrapper{background:#1C1713!important;border:1px solid rgba(192,90,48,.4)!important;border-radius:0!important;}
+.leaflet-popup-content-wrapper{background:#1C1713!important;border:1px solid rgba(192,90,48,.4)!important;border-radius:4px!important;}
 .leaflet-popup-tip{background:#1C1713!important;}
 .leaflet-popup-content{margin:8px 12px!important;font-family:'DM Sans',sans-serif;color:var(--sand);}
 </style>
 </head>
 <body>
-
-<!-- HERO -->
 <div id="s-hero" class="screen active">
   <p class="hero-eyebrow">✦ Zuid-Europa Vakantie Matcher</p>
   <h1 class="hero-title">Vind jullie<br><em>perfecte</em><br>bestemming</h1>
   <div class="deco-line"></div>
-  <p class="hero-sub">Paar vragen, blind swipen, jullie match op de kaart.</p>
+  <p class="hero-sub">Vragen beantwoorden, blind swipen in 3 rondes, jullie match op de kaart.</p>
   <button class="btn-primary" onclick="startQuestions()">Start →</button>
 </div>
-
-<!-- QUESTIONS -->
 <div id="s-questions" class="screen">
   <div class="q-wrap">
     <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
@@ -239,15 +182,14 @@ body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);m
     </div>
   </div>
 </div>
-
-<!-- SWIPE -->
 <div id="s-swipe" class="screen">
   <div class="swipe-header">
-    <h2>Swipe op je gevoel</h2>
-    <p>Geen namen — vertrouw je instinct • elke stad 3x</p>
+    <h2 id="swipe-title">Swipe op je gevoel</h2>
+    <p id="swipe-sub">Vertrouw je instinct</p>
     <p class="swipe-progress" id="swipe-prog"></p>
+    <div class="round-info" id="round-info"></div>
   </div>
-  <div class="swipe-stage" id="swipe-stage">
+  <div class="swipe-stage">
     <div class="swipe-card" id="swipe-card">
       <div class="card-inner">
         <div class="card-bg"></div>
@@ -267,30 +209,31 @@ body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);m
     <button class="swipe-btn skip" onclick="doSwipe(false)">✕</button>
     <button class="swipe-btn like" onclick="doSwipe(true)">❤️</button>
   </div>
-  <p class="swipe-hint">Sleep de kaart of gebruik de knoppen</p>
+  <p class="swipe-hint">Sleep of knoppen • ← → toetsen</p>
 </div>
-
-<!-- LOADING -->
+<div id="s-round" class="screen">
+  <h2 id="round-title"></h2>
+  <div class="round-stats" id="round-stats"></div>
+  <div class="eliminated-list" id="elim-list"></div>
+  <div class="survived-count" id="survived-count"></div>
+  <button class="btn-primary" id="round-btn" onclick="nextRound()">Volgende ronde →</button>
+</div>
 <div id="s-loading" class="screen">
   <div class="spin"></div>
   <h3>Matches worden berekend...</h3>
-  <p style="color:var(--muted);font-size:.88rem;margin-top:.3rem;">35+ steden vergeleken</p>
+  <p style="color:var(--muted);font-size:.88rem;margin-top:.3rem;">Alle data gecombineerd</p>
 </div>
-
-<!-- RESULTS -->
 <div id="s-results" class="screen">
   <div class="results-top">
     <h2 id="r-title">Jullie matches</h2>
     <div class="deco-line"></div>
-    <p style="color:var(--muted);font-size:.85rem;">Klik op een stad voor foto's en details</p>
+    <p style="color:var(--muted);font-size:.85rem;">Klik op een stad voor details</p>
     <div class="verdict" id="verdict"></div>
   </div>
   <div id="map" style="display:none;"></div>
   <div class="results-grid" id="results-grid"></div>
   <div class="again-wrap"><button class="btn-again" onclick="resetApp()">← Opnieuw</button></div>
 </div>
-
-<!-- MODAL -->
 <div id="modal">
   <div class="modal-bd" onclick="closeModal()"></div>
   <div class="modal-box">
@@ -304,959 +247,282 @@ body{font-family:'DM Sans',sans-serif;background:var(--deep);color:var(--sand);m
     <div class="modal-body" id="modal-body"></div>
   </div>
 </div>
-
 <script>
-// ============================================================
-// GOOGLE PLACES API (NEW) — REST
-// ============================================================
-const GKEY = 'AIzaSyC7Y8wfy2xxevGT3_KM9mQ9YpC9HqY1W98';
-const photoCache = {}; // cityId -> [url, url, url]
+const GKEY='AIzaSyC7Y8wfy2xxevGT3_KM9mQ9YpC9HqY1W98';
+const photoCache={};
 
-async function getCityPhotos(city) {
-  if (photoCache[city.id]) return photoCache[city.id];
-  photoCache[city.id] = [];
-  try {
-    const resp = await fetch('https://places.googleapis.com/v1/places:searchText', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': GKEY,
-        'X-Goog-FieldMask': 'places.id,places.photos'
-      },
-      body: JSON.stringify({ textQuery: city.searchQuery }),
-      signal: AbortSignal.timeout(8000)
-    });
-    if (!resp.ok) return [];
-    const data = await resp.json();
-    const place = data.places?.[0];
-    if (!place?.photos?.length) return [];
+async function fetchPhotoUri(pn){
+  try{const r=await fetch(`https://places.googleapis.com/v1/${pn}/media?maxWidthPx=3200&maxHeightPx=2400&skipHttpRedirect=true&key=${GKEY}`,{signal:AbortSignal.timeout(6000)});
+  if(!r.ok)return null;const d=await r.json();return d.photoUri||null;}catch(e){return null;}}
 
-    // Get details for more photos
-    const detResp = await fetch(`https://places.googleapis.com/v1/places/${place.id}`, {
-      headers: {
-        'X-Goog-Api-Key': GKEY,
-        'X-Goog-FieldMask': 'photos'
-      },
-      signal: AbortSignal.timeout(8000)
-    });
-    const det = detResp.ok ? await detResp.json() : place;
-    const photos = (det.photos || place.photos).slice(0, 15);
-    const n = photos.length;
+async function getPhotosForQuery(q,count=1){
+  try{const r=await fetch('https://places.googleapis.com/v1/places:searchText',{method:'POST',
+    headers:{'Content-Type':'application/json','X-Goog-Api-Key':GKEY,'X-Goog-FieldMask':'places.id,places.photos'},
+    body:JSON.stringify({textQuery:q}),signal:AbortSignal.timeout(8000)});
+  if(!r.ok)return[];const d=await r.json();const p=d.places?.[0];if(!p?.photos?.length)return[];
+  const photos=p.photos.slice(0,10);const n=photos.length;
+  let idx;if(count===1)idx=[0];else if(count===2)idx=[0,Math.min(3,n-1)];
+  else idx=[0,Math.floor(n*.4),Math.floor(n*.75)].map(i=>Math.min(i,n-1));
+  idx=[...new Set(idx)].slice(0,count);
+  const urls=await Promise.all(idx.map(i=>fetchPhotoUri(photos[i].name)));
+  return urls.filter(Boolean);}catch(e){return[];}}
 
-    // Pick 3 spread-out photos for visual variety
-    const indices = n >= 3 ? [0, Math.floor(n*0.4), Math.floor(n*0.75)] : [0,1,2].slice(0,n);
-    // Fetch actual photo URIs (skipHttpRedirect returns JSON with photoUri)
-    const urlPromises = indices.map(async i => {
-      try {
-        const mediaResp = await fetch(
-          `https://places.googleapis.com/v1/${photos[i].name}/media?maxWidthPx=1400&maxHeightPx=900&skipHttpRedirect=true&key=${GKEY}`,
-          { signal: AbortSignal.timeout(6000) }
-        );
-        if (!mediaResp.ok) return null;
-        const mediaData = await mediaResp.json();
-        return mediaData.photoUri || null;
-      } catch(e) { return null; }
-    });
-    const urls = (await Promise.all(urlPromises)).filter(Boolean);
-    photoCache[city.id] = urls;
-    return urls;
-  } catch(e) { return []; }
-}
+async function getCityRoundPhoto(city,round){
+  const key=`${city.id}_${round}`;if(photoCache[key]!==undefined)return photoCache[key];
+  photoCache[key]=null;
+  let q=`${city.name} ${city.country}`;
+  if(round==='beach')q=`${city.name} beach`;
+  if(round==='vibe')q=`${city.name} old town`;
+  const photos=await getPhotosForQuery(q,1);const url=photos[0]||null;photoCache[key]=url;return url;}
 
-async function loadPhoto(city, slot) {
-  const photos = await getCityPhotos(city);
-  return photos[Math.min(slot, photos.length-1)] || null;
-}
+async function getCityAllPhotos(city){
+  const key=`${city.id}_all`;if(photoCache[key])return photoCache[key];
+  const urls=[];for(const r of['overview','beach','vibe']){const u=await getCityRoundPhoto(city,r);if(u)urls.push(u);}
+  photoCache[key]=urls;return urls;}
 
-// ============================================================
-// CITY DATABASE
-// ============================================================
-const CITIES = [
-{ id:'ibiza', name:'Ibiza', country:'Spanje', flag:'🇪🇸', lat:38.91, lng:1.43,
-  searchQuery:'Ibiza island Spain tourism',
-  island:true, canDrive:false, flyH:2.3,
-  beach:true, beachType:'sand', nightlife:5, culture:2, beauty:4, size:'small', pop:150000, tempAug:29, dutch:5, costLevel:4,
-  beaches:['Playa d\'en Bossa','Cala Conta','Las Salinas','Cala Bassa'],
-  desc:'Het absolute feestmekka van Europa. Wereldberoemde clubs, witte dorpjes en turquoise baaien.',
-  known:['Pacha & Amnesia clubs','Café del Mar sunset','San Antonio strip','Boat parties'],
-  tips:'Boek clubs ver van tevoren. Dagtrip naar Formentera is must. Vroeg eten (22u) dan naar clubs.',
-  vibes:'🔥 Party • Strand • Eiland', emoji:'🎉', photoLabels:['Overzicht','Strand','Nachtleven'] },
-
-{ id:'mallorca', name:'Mallorca', country:'Spanje', flag:'🇪🇸', lat:39.57, lng:2.65,
-  searchQuery:'Mallorca Balearic Islands Spain tourism',
-  island:true, canDrive:false, flyH:2.3,
-  beach:true, beachType:'sand', nightlife:4, culture:3, beauty:4, size:'large', pop:430000, tempAug:29, dutch:5, costLevel:3,
-  beaches:['Playa de Palma','Cala d\'Or','Formentor','Cala Agulla'],
-  desc:'Grootste Balearen-eiland. Van party-bays in Magaluf tot stille coves en prachtig Palma.',
-  known:['Magaluf nachtleven','Palma kathedraal','Cala d\'Or baaien','Serra de Tramuntana'],
-  tips:'Huur een auto voor de mooiste coves. Magaluf voor feest, noordkust voor rust.',
-  vibes:'🎉 Party • Strand • Eiland', emoji:'🏖️', photoLabels:['Overzicht','Strand','Uitgaan'] },
-
-{ id:'menorca', name:'Menorca', country:'Spanje', flag:'🇪🇸', lat:40.00, lng:3.83,
-  searchQuery:'Menorca island Spain beach turquoise',
-  island:true, canDrive:false, flyH:2.3,
-  beach:true, beachType:'sand', nightlife:2, culture:3, beauty:5, size:'small', pop:95000, tempAug:27, dutch:2, costLevel:2,
-  beaches:['Cala Macarella','Cala en Turqueta','Cala Pregonda','Binibèquer'],
-  desc:'Rustig alternatief voor Ibiza. UNESCO biosfeerparkje, turquoise baaien als de Malediven.',
-  known:['Cala Macarella (iconisch)','Ciutadella','gin Xoriguer','prehistoric talayots'],
-  tips:'Huur een scooter om de coves te bereiken. Perfecte optie als je rust + mooi water wil.',
-  vibes:'🌊 Rustig • Strand • Eiland', emoji:'🌊', photoLabels:['Overzicht','Strand','Stad'] },
-
-{ id:'barcelona', name:'Barcelona', country:'Spanje', flag:'🇪🇸', lat:41.39, lng:2.15,
-  searchQuery:'Barcelona Spain city tourism',
-  island:false, canDrive:true, driveH:14, flyH:2.1,
-  beach:true, beachType:'sand', nightlife:5, culture:5, beauty:5, size:'large', pop:1600000, tempAug:27, dutch:4, costLevel:3,
-  beaches:['Barceloneta','Bogatell','Mar Bella'],
-  desc:'Gaudí, strand, Michelin-restaurants en clubs die pas beginnen om 3 uur s nachts.',
-  known:['Sagrada Família','Barceloneta strand','Ramblas','Razzmatazz & Pacha'],
-  tips:'Clubs beginnen na 01:00. Dag: strand & architectuur. Nacht: Gracia & Gothic Quarter.',
-  vibes:'🏙️ Cultuur • Strand • Nachtleven', emoji:'🏙️', photoLabels:['Overzicht','Strand','Nachtleven'] },
-
-{ id:'sitges', name:'Sitges', country:'Spanje', flag:'🇪🇸', lat:41.24, lng:1.81,
-  searchQuery:'Sitges Spain coastal town beach',
-  island:false, canDrive:true, driveH:14, flyH:2.1,
-  beach:true, beachType:'sand', nightlife:3, culture:3, beauty:4, size:'small', pop:28000, tempAug:27, dutch:3, costLevel:3,
-  beaches:['Playa de la Ribera','San Sebastian','Playa de Terramar'],
-  desc:'Charmant Catalaans kuststadje met kleurrijke architectuur, zandstranden en gezellig uitgaansleven.',
-  known:['Cava bars','Filmfestival','Promenade','Pride evenement'],
-  tips:'30 min van Barcelona. Veel rustiger en smaller dan Barcelona. Geweldige dagtrip of uitvalsbasis.',
-  vibes:'🌊 Gezellig • Strand • Kust', emoji:'🎭', photoLabels:['Overzicht','Strand','Sfeer'] },
-
-{ id:'valencia', name:'Valencia', country:'Spanje', flag:'🇪🇸', lat:39.47, lng:-0.37,
-  searchQuery:'Valencia Spain city tourism',
-  island:false, canDrive:false, flyH:2.3,
-  beach:true, beachType:'sand', nightlife:4, culture:4, beauty:4, size:'large', pop:800000, tempAug:29, dutch:3, costLevel:2,
-  beaches:['Playa de la Malvarrosa','Playa del Cabanyal','El Saler'],
-  desc:'Geboorteplaats van paella. Futuristische architectuur, heerlijk eten en druk nachtleven.',
-  known:['Ciudad de las Artes','Las Fallas festival','Ruzafa wijk','paella origineel'],
-  tips:'Ruzafa wijk voor het beste nachtleven. Eet pas na 22u. Dagtrip naar Albufera lagune.',
-  vibes:'🏙️ Stad • Strand • Eten', emoji:'🥘', photoLabels:['Overzicht','Strand','Architectuur'] },
-
-{ id:'alicante', name:'Alicante', country:'Spanje', flag:'🇪🇸', lat:38.35, lng:-0.49,
-  searchQuery:'Alicante Spain beach tourism',
-  island:false, canDrive:false, flyH:2.5,
-  beach:true, beachType:'sand', nightlife:3, culture:3, beauty:3, size:'medium', pop:330000, tempAug:30, dutch:3, costLevel:2,
-  beaches:['Playa del Postiguet','Playa de San Juan','Cabo de las Huertas'],
-  desc:'Zonnige Spaanse stad met imposant kasteel, lange zandstranden en relaxte sfeer.',
-  known:['Castillo de Santa Bárbara','Explanada promenade','Tapas barrio','Hogueras festival'],
-  tips:'Goedkoper dan Ibiza/Barcelona. Top basis voor dagtrips. Kasteel gratis met lift.',
-  vibes:'☀️ Strand • Relaxed • Zon', emoji:'🏰', photoLabels:['Overzicht','Strand','Kasteel'] },
-
-{ id:'benidorm', name:'Benidorm', country:'Spanje', flag:'🇪🇸', lat:38.54, lng:-0.13,
-  searchQuery:'Benidorm Spain beach resort',
-  island:false, canDrive:false, flyH:2.5,
-  beach:true, beachType:'sand', nightlife:4, culture:1, beauty:2, size:'medium', pop:70000, tempAug:30, dutch:4, costLevel:2,
-  beaches:['Playa de Levante (3km)','Playa de Poniente (2km)'],
-  desc:'Spaans Las Vegas aan zee. Torenhoge hotels, brede zandstranden en uitgaansleven 24/7.',
-  known:['Levante strand','Benidorm Palace show','Brits nachtleven','Aqualandia waterpark'],
-  tips:'Levante strand vroeg voor goede plek. Nachtleven op The Strip. Goedkoop en no-nonsense.',
-  vibes:'🎪 Party • Strand • Zon', emoji:'🌇', photoLabels:['Overzicht','Strand','Nachtleven'] },
-
-{ id:'sansebastian', name:'San Sebastián', country:'Spanje', flag:'🇪🇸', lat:43.32, lng:-1.98,
-  searchQuery:'San Sebastian Spain La Concha beach',
-  island:false, canDrive:true, driveH:11, flyH:1.8,
-  beach:true, beachType:'sand', nightlife:3, culture:4, beauty:5, size:'medium', pop:186000, tempAug:22, dutch:2, costLevel:3,
-  beaches:['La Concha','Zurriola (surf)','Ondarreta'],
-  desc:'Culinaire hoofdstad van Europa. Meeste Michelin-sterren per m², plus één van de mooiste baaien.',
-  known:['Pintxos hop Parte Vieja','La Concha baai','Michelin sterren','Surfen bij Zurriola'],
-  tips:'Avond pintxos hoppen: 1 drankje + 1 pintxo per bar. Aangenamer temperatuur dan Zuid-Spanje.',
-  vibes:'🐚 Cultuur • Strand • Eten', emoji:'🐚', photoLabels:['Overzicht','Strand','Eten'] },
-
-{ id:'nice', name:'Nice', country:'Frankrijk', flag:'🇫🇷', lat:43.71, lng:7.26,
-  searchQuery:'Nice France Cote Azur tourism',
-  island:false, canDrive:true, driveH:12, flyH:1.8,
-  beach:true, beachType:'pebble', nightlife:3, culture:4, beauty:5, size:'large', pop:340000, tempAug:28, dutch:3, costLevel:4,
-  beaches:['Promenade des Anglais','Villefranche-sur-Mer','Antibes (22km)'],
-  desc:'Koningin van de Côte d\'Azur. Chique sfeer, kleurrijke marktjes en Monaco om de hoek.',
-  known:['Promenade des Anglais','Cours Saleya markt','Vieux-Nice','Monaco dagtrip (20 min)'],
-  tips:'Gratis keistranden. Train naar Monaco: 30 min. Marché du Cours Saleya elke ochtend.',
-  vibes:'💎 Luxe • Kust • Cultuur', emoji:'💎', photoLabels:['Overzicht','Kust','Markt'] },
-
-{ id:'marseille', name:'Marseille', country:'Frankrijk', flag:'🇫🇷', lat:43.30, lng:5.37,
-  searchQuery:'Marseille France calanques harbor',
-  island:false, canDrive:true, driveH:11, flyH:1.7,
-  beach:true, beachType:'mixed', nightlife:3, culture:4, beauty:4, size:'large', pop:870000, tempAug:29, dutch:1, costLevel:2,
-  beaches:['Plage du Prado','Les Calanques','Anse de Malmousque'],
-  desc:'Ruige, authentieke havenstad met de spectaculaire Calanques. Verrast iedereen.',
-  known:['Calanques nationaal park','Vieux-Port','bouillabaisse','MuCEM museum'],
-  tips:'Kajakken door de Calanques is de highlight. Vieux-Port voor vis en sfeer.',
-  vibes:'⚓ Authentiek • Natuur • Cultuur', emoji:'⚓', photoLabels:['Haven','Calanques','Stad'] },
-
-{ id:'cannes', name:'Cannes', country:'Frankrijk', flag:'🇫🇷', lat:43.55, lng:7.02,
-  searchQuery:'Cannes France La Croisette beach',
-  island:false, canDrive:true, driveH:12, flyH:1.8,
-  beach:true, beachType:'mixed', nightlife:4, culture:4, beauty:5, size:'medium', pop:75000, tempAug:28, dutch:2, costLevel:4,
-  beaches:['La Croisette','Plage du Midi (gratis)','Île Sainte-Marguerite'],
-  desc:'Filmsterren, jachten en glamour. La Croisette is het mooiste boulevard van de Rivièra.',
-  known:['Filmfestival','La Croisette wandeling','Jachthaven','Antibes erbij'],
-  tips:'Gratis strand bij Plage du Midi. Antibes op 15 min met trein.',
-  vibes:'🎬 Glamour • Strand • Luxe', emoji:'🎬', photoLabels:['Croisette','Strand','Sfeer'] },
-
-{ id:'rimini', name:'Rimini', country:'Italië', flag:'🇮🇹', lat:44.06, lng:12.57,
-  searchQuery:'Rimini Italy beach adriatic',
-  island:false, canDrive:true, driveH:13, flyH:2.0,
-  beach:true, beachType:'sand', nightlife:4, culture:3, beauty:3, size:'medium', pop:155000, tempAug:28, dutch:3, costLevel:2,
-  beaches:['15km aaneengesloten zandstrand','Riccione erbij'],
-  desc:'Italiaans strandparadijs. Enorm zandstrand met beach clubs en druk nachtleven.',
-  known:['Notte Rosa festival','beach clubs','Federico Fellini geboren hier','Riccione erbij'],
-  tips:'Notte Rosa in juli: roze nacht, gratis feest over heel de kust.',
-  vibes:'🇮🇹 Strand • Nachtleven • Italiaans', emoji:'🇮🇹', photoLabels:['Stad','Strand','Sfeer'] },
-
-{ id:'jesolo', name:'Jesolo', country:'Italië', flag:'🇮🇹', lat:45.54, lng:12.64,
-  searchQuery:'Jesolo Italy beach Lido Venice',
-  island:false, canDrive:true, driveH:12, flyH:2.0,
-  beach:true, beachType:'sand', nightlife:3, culture:2, beauty:3, size:'small', pop:26000, tempAug:28, dutch:4, costLevel:2,
-  beaches:['Lido di Jesolo (15km lang zandstrand)'],
-  desc:'Populaire Italiaanse badplaats vlak bij Venetië. Lange zandstrand en veel Nederlanders.',
-  known:['Zandstrand','Venetië dagtrip (1 uur boot)','beach bars','gelato'],
-  tips:'Boot naar Venetië vanuit Piazzale Roma (1u). Veel NL gesproken.',
-  vibes:'🏊 Strand • Relaxed • NL-vriendelijk', emoji:'🏊', photoLabels:['Strand','Venetië','Sfeer'] },
-
-{ id:'rome', name:'Rome', country:'Italië', flag:'🇮🇹', lat:41.90, lng:12.50,
-  searchQuery:'Rome Italy Colosseum tourism',
-  island:false, canDrive:true, driveH:16, flyH:2.4,
-  beach:false, beachType:'none', nightlife:3, culture:5, beauty:5, size:'large', pop:2800000, tempAug:31, dutch:4, costLevel:3,
-  beaches:['Ostia (30km)','Fregene (35km)'],
-  desc:'De Eeuwige Stad. Cultuur op elk straathoek, heerlijk eten en in augustus nauwelijks toeristen.',
-  known:['Colosseum','Vaticaan','Trastevere wijk','Fontana di Trevi'],
-  tips:'Augustus is rustigst. Vroeg naar Vaticaan. Trastevere s avonds voor eten.',
-  vibes:'🏛️ Cultuur • Stad • Historie', emoji:'🏛️', photoLabels:['Overzicht','Colosseum','Trastevere'] },
-
-{ id:'amalfi', name:'Amalfikust', country:'Italië', flag:'🇮🇹', lat:40.63, lng:14.60,
-  searchQuery:'Amalfi Coast Italy Positano cliffs',
-  island:false, canDrive:true, driveH:18, flyH:2.5,
-  beach:true, beachType:'pebble', nightlife:2, culture:4, beauty:5, size:'small', pop:5000, tempAug:30, dutch:3, costLevel:4,
-  beaches:['Marina di Praia','Positano strand','Ravello'],
-  desc:'Meest fotogenieke kust ter wereld. Pastelkleurige dorpjes op kliffen boven diepblauw water.',
-  known:['Positano','Ravello','limoncello','smalle kliffenwegen'],
-  tips:'Vermijd auto in augustus: neem ferry of bus. Vroeg opstaan voor Positano zonder toeristen.',
-  vibes:'🌺 Mooi • Rustig • Natuur', emoji:'🌺', photoLabels:['Kust','Positano','Strand'] },
-
-{ id:'sardinia', name:'Sardinië', country:'Italië', flag:'🇮🇹', lat:39.22, lng:9.12,
-  searchQuery:'Sardinia Italy beach turquoise water',
-  island:true, canDrive:false, flyH:2.5,
-  beach:true, beachType:'sand', nightlife:2, culture:3, beauty:5, size:'medium', pop:150000, tempAug:30, dutch:2, costLevel:3,
-  beaches:['La Pelosa','Cala Luna','Costa Smeralda','Spiaggia Tuerredda'],
-  desc:'Caribisch blauw water, poederachtig wit zand en veel minder toeristen dan de Griekse eilanden.',
-  known:['Costa Smeralda','La Pelosa','Nuraghe ruïnes','Barbagia binnenland'],
-  tips:'La Pelosa: reserveer online. Costa Smeralda duur, zuidkust goedkoper en net zo mooi.',
-  vibes:'🌊 Rustig • Natuur • Paradijs', emoji:'🌊', photoLabels:['Overzicht','La Pelosa','Costa Smeralda'] },
-
-{ id:'sicily', name:'Sicilië', country:'Italië', flag:'🇮🇹', lat:37.60, lng:14.01,
-  searchQuery:'Sicily Italy Taormina beach Etna',
-  island:true, canDrive:false, flyH:2.8,
-  beach:true, beachType:'mixed', nightlife:2, culture:5, beauty:5, size:'large', pop:670000, tempAug:31, dutch:2, costLevel:2,
-  beaches:['Scala dei Turchi','San Vito Lo Capo','Cefalù','Taormina'],
-  desc:'Etna, Griekse tempels en de beste granita ter wereld. Ruig en authentiek Italië.',
-  known:['Etna vulkaan','Taormina Grieks theater','arancini','Cefalù strand'],
-  tips:'Taormina + Etna = epische dag. Scala dei Turchi is de mooiste rotsstrand van Europa.',
-  vibes:'🌋 Cultuur • Authentiek • Natuur', emoji:'🌋', photoLabels:['Overzicht','Strand','Etna'] },
-
-{ id:'split', name:'Split', country:'Kroatië', flag:'🇭🇷', lat:43.51, lng:16.44,
-  searchQuery:'Split Croatia Diocletian Palace old town',
-  island:false, canDrive:true, driveH:15, flyH:2.3,
-  beach:true, beachType:'pebble', nightlife:4, culture:4, beauty:5, size:'medium', pop:178000, tempAug:30, dutch:4, costLevel:2,
-  beaches:['Bačvice','Kašjuni','Žnjan','Kaštela (zand, 20km)'],
-  desc:'Middeleeuwse stad midden in een Romeins paleis, ferry naar eilanden en actief nachtleven.',
-  known:['Diocletiaan Paleis','Bačvice picigin','Riva promenade','Ferry naar Hvar'],
-  tips:'Slaap in het paleis zelf. Bačvice strand elke avond gezellig. Hvar dagtrip: boot 1 uur.',
-  vibes:'🏛️ Cultuur • Strand • Nachtleven', emoji:'🏛️', photoLabels:['Paleis','Strand','Nachtleven'] },
-
-{ id:'dubrovnik', name:'Dubrovnik', country:'Kroatië', flag:'🇭🇷', lat:42.65, lng:18.09,
-  searchQuery:'Dubrovnik Croatia old town walls',
-  island:false, canDrive:true, driveH:17, flyH:2.5,
-  beach:true, beachType:'pebble', nightlife:3, culture:5, beauty:5, size:'small', pop:42000, tempAug:30, dutch:4, costLevel:3,
-  beaches:['Banje Beach','Sveti Jakov','Lapad','Lokrum eiland'],
-  desc:'Game of Thrones-stad. Middeleeuwse stadsmuren boven kristalhelder Adriatisch water.',
-  known:['Stadsmuren wandeling','Stradun','GoT locaties','Lokrum eiland ferry'],
-  tips:'Muren wandelen vroeg (08:00) voor hitte. Banje Beach mooiste vlak bij centrum.',
-  vibes:'🏰 Cultuur • Strand • Prachtig', emoji:'🏰', photoLabels:['Stadsmuren','Strand','Overzicht'] },
-
-{ id:'hvar', name:'Hvar', country:'Kroatië', flag:'🇭🇷', lat:43.17, lng:16.44,
-  searchQuery:'Hvar island Croatia beach party',
-  island:true, canDrive:false, flyH:2.5,
-  beach:true, beachType:'pebble', nightlife:5, culture:3, beauty:5, size:'small', pop:13000, tempAug:30, dutch:3, costLevel:3,
-  beaches:['Pakleni otoci (boot 10min)','Mlaska','Dubovica','Hvar town'],
-  desc:'Meest exclusieve eiland van Kroatië. Lavendelvelden, kristalhelder water en Ibiza-level nightlife.',
-  known:['Hula Hula beach bar sunset','Carpe Diem club','Pakleni eilanden','Lavendel'],
-  tips:'Pakleni eilanden: huur een bootje. Hula Hula voor de mooiste sunset drinks.',
-  vibes:'💜 Party • Strand • Eiland', emoji:'💜', photoLabels:['Overzicht','Strand','Nachtleven'] },
-
-{ id:'zadar', name:'Zadar', country:'Kroatië', flag:'🇭🇷', lat:44.12, lng:15.23,
-  searchQuery:'Zadar Croatia old town sea organ',
-  island:false, canDrive:true, driveH:14, flyH:2.2,
-  beach:true, beachType:'pebble', nightlife:2, culture:4, beauty:4, size:'medium', pop:75000, tempAug:28, dutch:2, costLevel:1,
-  beaches:['Kolovare','Borik','Zaton','Nin (zandstrand, 15km)'],
-  desc:'Authentieke Kroatische stad met het beroemde Zee-orgel en de mooiste zonsondergang.',
-  known:['Zee-orgel (uniek)','Begroeting van de Zon','Plitvice dagtrip (2u)','Nationaal Parks'],
-  tips:'Goedkoopste badplaats van Kroatië. Plitvice dagtrip vanuit Zadar (2 uur). Nin heeft echt zandstrand.',
-  vibes:'🎵 Authentiek • Rustig • Natuur', emoji:'🎵', photoLabels:['Stad','Zee-orgel','Omgeving'] },
-
-{ id:'rovinj', name:'Rovinj', country:'Kroatië', flag:'🇭🇷', lat:45.08, lng:13.64,
-  searchQuery:'Rovinj Croatia old town harbor Istria',
-  island:false, canDrive:true, driveH:12, flyH:1.8,
-  beach:true, beachType:'pebble', nightlife:2, culture:4, beauty:5, size:'small', pop:14000, tempAug:27, dutch:3, costLevel:2,
-  beaches:['Kuvi','Valdibora','Zlatni rt park','Monte Mulini'],
-  desc:'Mooiste stadje van Istrië. Pastelkleurige huisjes op schiereiland, vissershaven en prachtige natuur.',
-  known:['Sant\'Eufemia kerk op heuvel','Zlatni rt bospark','Lim fjord','Istrische truffels'],
-  tips:'Zonsopgang vanuit de kerk is iconisch. Dagtrip naar Pula (amfitheater, 40min).',
-  vibes:'🎨 Romantisch • Rustig • Mooi', emoji:'🎨', photoLabels:['Haven','Stad','Natuur'] },
-
-{ id:'pula', name:'Pula', country:'Kroatië', flag:'🇭🇷', lat:44.87, lng:13.85,
-  searchQuery:'Pula Croatia amphitheater Roman arena',
-  island:false, canDrive:true, driveH:12, flyH:1.8,
-  beach:true, beachType:'pebble', nightlife:2, culture:5, beauty:4, size:'medium', pop:57000, tempAug:27, dutch:2, costLevel:1,
-  beaches:['Punta Verudela','Medulin','Premantura','Brijuni eilanden'],
-  desc:'Istrische havenstad met perfect bewaard Romeins amfitheater van 2000 jaar oud — concerten in de zomer.',
-  known:['Pula Arena concerten','Brijuni eilanden','Aquarium','Istrische keuken'],
-  tips:'Arena concerten in de zomer: boek vroeg. Brijuni eilanden dagtrip per boot.',
-  vibes:'🏟️ Cultuur • Rustig • Historie', emoji:'🏟️', photoLabels:['Arena','Kust','Stad'] },
-
-{ id:'mykonos', name:'Mykonos', country:'Griekenland', flag:'🇬🇷', lat:37.45, lng:25.33,
-  searchQuery:'Mykonos Greece island windmills beach',
-  island:true, canDrive:false, flyH:3.5,
-  beach:true, beachType:'sand', nightlife:5, culture:2, beauty:5, size:'small', pop:10000, tempAug:27, dutch:4, costLevel:5,
-  beaches:['Paradise Beach','Super Paradise','Psarou','Elia','Ornos'],
-  desc:'Glamour-eiland van de Cycladen. Wit en blauw, dag-party beaches en de beste zomers van Europa.',
-  known:['Paradise Beach all-day party','windmolens','Little Venice sunset','celebrity spotting'],
-  tips:'Duurst eiland van Griekenland. Psarou voor VIP sfeer. Paradise voor feesten.',
-  vibes:'⚡ Party • Strand • Luxe', emoji:'⚡', photoLabels:['Overzicht','Strand','Little Venice'] },
-
-{ id:'santorini', name:'Santorini', country:'Griekenland', flag:'🇬🇷', lat:36.39, lng:25.46,
-  searchQuery:'Santorini Greece Oia blue domes sunset',
-  island:true, canDrive:false, flyH:4.0,
-  beach:true, beachType:'mixed', nightlife:2, culture:3, beauty:5, size:'small', pop:15000, tempAug:27, dutch:4, costLevel:4,
-  beaches:['Perissa (zwart zand)','Red Beach','Vlychada','Kamari'],
-  desc:'Meest gefotografeerde eiland ter wereld. Vulkaanlandschappen, blauwe koepels en zonsondergangen.',
-  known:['Oia zonsondergang (must)','blauwe koepels','caldera uitzicht','vulkaan wandeling'],
-  tips:'Oia in juni/sept minder vol. Fira naar Oia wandelen (10km kliffenpad).',
-  vibes:'🌅 Prachtig • Romantisch • Rustig', emoji:'🌅', photoLabels:['Oia','Strand','Caldera'] },
-
-{ id:'rhodes', name:'Rhodos', country:'Griekenland', flag:'🇬🇷', lat:36.43, lng:28.22,
-  searchQuery:'Rhodes Greece old town beach Lindos',
-  island:true, canDrive:false, flyH:3.5,
-  beach:true, beachType:'sand', nightlife:3, culture:4, beauty:4, size:'medium', pop:115000, tempAug:28, dutch:3, costLevel:2,
-  beaches:['Faliraki','Lindos','Tsambika','Elli'],
-  desc:'Middeleeuwse stad, zandstranden en actief nachtleven in Faliraki. Voor wie alles wil.',
-  known:['Rhodos Oude Stad (UNESCO)','Lindos Akropolis','Faliraki strip','Colossus locatie'],
-  tips:'Rhodos stad UNESCO. Lindos: ga s ochtends vroeg voor de akropolis.',
-  vibes:'🗡️ Cultuur • Strand • Actief', emoji:'🗡️', photoLabels:['Oude Stad','Lindos','Strand'] },
-
-{ id:'corfu', name:'Corfu', country:'Griekenland', flag:'🇬🇷', lat:39.62, lng:19.92,
-  searchQuery:'Corfu Greece island beach Paleokastritsa',
-  island:true, canDrive:false, flyH:3.0,
-  beach:true, beachType:'mixed', nightlife:3, culture:3, beauty:4, size:'medium', pop:39000, tempAug:29, dutch:3, costLevel:2,
-  beaches:['Sidari (zand)','Glyfada','Paleokastritsa','Kavos (party)'],
-  desc:'Groen eiland met Venetiaanse architectuur en Kavos als bekende party strip.',
-  known:['Kavos nachtleven','Venetiaans Oud Fort','Achilleion paleis','Mouse Island'],
-  tips:'Kavos voor jonge party sfeer. Paleiokastritsa voor natuur. Huur scooter voor het eiland.',
-  vibes:'🌿 Natuur • Strand • Gezellig', emoji:'🌿', photoLabels:['Overzicht','Natuur','Kavos'] },
-
-{ id:'crete', name:'Kreta', country:'Griekenland', flag:'🇬🇷', lat:35.24, lng:25.02,
-  searchQuery:'Crete Greece Elafonissi pink beach',
-  island:true, canDrive:false, flyH:3.5,
-  beach:true, beachType:'sand', nightlife:3, culture:4, beauty:4, size:'large', pop:175000, tempAug:29, dutch:3, costLevel:2,
-  beaches:['Elafonissi (roze zand)','Balos lagune','Matala','Falassarna'],
-  desc:'Grootste Griekse eiland. Minoan cultuur, roze zandstranden en fantastisch eten.',
-  known:['Knossos paleis','Elafonissi (roze strand)','Samaria kloof','Lokale keuken'],
-  tips:'Elafonissi vroeg of laat. Balos: kliffenwandeling of boot. Huur auto.',
-  vibes:'🐂 Cultuur • Strand • Natuur', emoji:'🐂', photoLabels:['Overzicht','Elafonissi','Knossos'] },
-
-{ id:'zakynthos', name:'Zakynthos', country:'Griekenland', flag:'🇬🇷', lat:37.78, lng:20.89,
-  searchQuery:'Zakynthos Greece Navagio shipwreck beach',
-  island:true, canDrive:false, flyH:3.0,
-  beach:true, beachType:'sand', nightlife:3, culture:2, beauty:5, size:'small', pop:10000, tempAug:30, dutch:3, costLevel:2,
-  beaches:['Navagio Shipwreck Beach','Gerakas (zeeschildpadden)','Porto Zoro','Laganas'],
-  desc:'Huis van het iconische Scheepswrak-strand. Kristalhelder water en Caretta zeeschildpadden.',
-  known:['Navagio Shipwreck (meest gefotografeerd)','Blauwe Grotten','Caretta schildpadden','Laganas nachtleven'],
-  tips:'Navagio per boot (30 min). Gerakas: geen parasols ivm schildpadden.',
-  vibes:'⛵ Prachtig • Strand • Natuur', emoji:'⛵', photoLabels:['Navagio','Strand','Natuur'] },
-
-{ id:'budva', name:'Budva', country:'Montenegro', flag:'🇲🇪', lat:42.28, lng:18.84,
-  searchQuery:'Budva Montenegro old town beach Adriatic',
-  island:false, canDrive:true, driveH:17, flyH:2.5,
-  beach:true, beachType:'sand', nightlife:3, culture:3, beauty:4, size:'small', pop:19000, tempAug:29, dutch:1, costLevel:1,
-  beaches:['Slovenska plaža','Mogren','Sveti Stefan','Jaz Beach'],
-  desc:'Balkans best bewaarde geheim. Middeleeuwse oude stad, zandstranden — spotgoedkoop.',
-  known:['Budva citadel','Sveti Stefan eilandje','Lovćen NP','Ultra-laag prijzen'],
-  tips:'Goedkoopste Adriatische kust. Sveti Stefan is iconisch maar privé — mooi van buiten.',
-  vibes:'🗺️ Verborgen • Strand • Authentiek', emoji:'🗺️', photoLabels:['Oude Stad','Strand','Sveti Stefan'] },
-
-{ id:'ksamil', name:'Ksamil', country:'Albanië', flag:'🇦🇱', lat:39.77, lng:20.01,
-  searchQuery:'Ksamil Albania beach turquoise water',
-  island:false, canDrive:true, driveH:19, flyH:2.5,
-  beach:true, beachType:'sand', nightlife:1, culture:2, beauty:5, size:'village', pop:3000, tempAug:29, dutch:1, costLevel:1,
-  beaches:['Ksamil strand','Mirror Beach','3 Islands strand','Shën Vasil'],
-  desc:'Albanees paradijs met water dat lijkt op de Malediven. Spotgoedkoop en nauwelijks ontdekt.',
-  known:['Caribisch blauw water','Butrint UNESCO','Ultra-lage prijzen','Ongerepte natuur'],
-  tips:'Griekse grens is 10 min. Butrint dagtrip: indrukwekkende Griekse ruïnes.',
-  vibes:'💎 Verborgen • Strand • Goedkoop', emoji:'💎', photoLabels:['Strand','Water','Omgeving'] },
-
-{ id:'malta', name:'Malta', country:'Malta', flag:'🇲🇹', lat:35.90, lng:14.51,
-  searchQuery:'Malta island Valletta Blue Lagoon tourism',
-  island:true, canDrive:false, flyH:3.0,
-  beach:true, beachType:'rocky', nightlife:3, culture:5, beauty:4, size:'medium', pop:115000, tempAug:32, dutch:2, costLevel:2,
-  beaches:['Golden Bay','Mellieħa Bay','Blue Lagoon (Comino)','St. Peter\'s Pool'],
-  desc:'Klein eiland met wereldklasse UNESCO geschiedenis, de iconische Blue Lagoon en Paceville.',
-  known:['Valletta EU hoofdstad','Blue Lagoon Comino','Paceville nachtleven','Mdina stille stad'],
-  tips:'Blue Lagoon vroeg (08:30) voor boten vol zijn. Valletta gratis te verkennen.',
-  vibes:'🔱 Cultuur • Strand • Eiland', emoji:'🔱', photoLabels:['Valletta','Blue Lagoon','Kust'] },
-
-{ id:'ayianapa', name:'Ayia Napa', country:'Cyprus', flag:'🇨🇾', lat:34.99, lng:34.00,
-  searchQuery:'Ayia Napa Cyprus Nissi Beach party',
-  island:true, canDrive:false, flyH:4.0,
-  beach:true, beachType:'sand', nightlife:5, culture:1, beauty:3, size:'small', pop:33000, tempAug:34, dutch:2, costLevel:2,
-  beaches:['Nissi Beach (party)','Makronissos','Fig Tree Bay','Cape Greco'],
-  desc:'Ultieme party destination. Nissi Beach is dé dag-party beach van het Middellandse Zeegebied.',
-  known:['Nissi Beach dag-feest','Castle Club','foam parties','Cape Greco snorkelen'],
-  tips:'Nissi Beach: dag én nacht feest. Cape Greco voor rust + snorkelen.',
-  vibes:'🔊 Party • Strand • Zon', emoji:'🔊', photoLabels:['Overzicht','Nissi Beach','Sfeer'] },
-
-{ id:'bodrum', name:'Bodrum', country:'Turkije', flag:'🇹🇷', lat:37.03, lng:27.43,
-  searchQuery:'Bodrum Turkey castle harbor beach Aegean',
-  island:false, canDrive:false, flyH:3.8,
-  beach:true, beachType:'sand', nightlife:4, culture:3, beauty:4, size:'medium', pop:37000, tempAug:32, dutch:2, costLevel:2,
-  beaches:['Gümüşlük','Bitez','Turgutreis','Göltürkbükü'],
-  desc:'Turquoise lagunes, witte huisjes en de beste party-boats van de Egeïsche kust.',
-  known:['Halikarnas (grootste openlucht club)','Castle of St. Peter','Blue Cruise gulet','Bodrum markt'],
-  tips:'Gulet (houten boot) trip is de highlight. Gümüşlük voor rust en vis eten.',
-  vibes:'🛥️ Party • Strand • Warm', emoji:'🛥️', photoLabels:['Haven','Kasteel','Strand'] },
-
-{ id:'algarve', name:'Algarve', country:'Portugal', flag:'🇵🇹', lat:37.02, lng:-7.93,
-  searchQuery:'Algarve Portugal cliffs beach golden',
-  island:false, canDrive:false, flyH:2.6,
-  beach:true, beachType:'sand', nightlife:3, culture:3, beauty:5, size:'medium', pop:60000, tempAug:26, dutch:4, costLevel:2,
-  beaches:['Praia da Marinha','Benagil grot strand','Meia Praia','Manta Rota'],
-  desc:'Spectaculaire zandsteenkliffen, gouden stranden en relaxte terrasjes. Portugal op zijn best.',
-  known:['Benagil grot (boot tour)','Sagres kaap','Albufeira nacht','verse vis'],
-  tips:'Benagil grot vroeg voor kajakken. Albufeira voor nachtleven. Cooler dan Spanje in augustus.',
-  vibes:'🏔️ Strand • Kliffen • Relaxed', emoji:'🏔️', photoLabels:['Kliffen','Benagil','Strand'] },
-
-{ id:'lisbon', name:'Lissabon', country:'Portugal', flag:'🇵🇹', lat:38.72, lng:-9.14,
-  searchQuery:'Lisbon Portugal Alfama tram tourism',
-  island:false, canDrive:false, flyH:2.7,
-  beach:false, beachType:'none', nightlife:4, culture:5, beauty:5, size:'large', pop:550000, tempAug:28, dutch:3, costLevel:2,
-  beaches:['Cascais (35km trein)','Costa da Caparica (15km)'],
-  desc:'Heuvels, pasteis de nata, Fado en nachtleven tot zonsopgang. Hipste hoofdstad van Europa.',
-  known:['Belém toren','Alfama wijk','pastéis de nata','LUX Frágil club'],
-  tips:'Tram 28 door Alfama. Nachtleven begint laat (01:00+). Sintra dagtrip (40 min).',
-  vibes:'🎵 Cultuur • Stad • Nachtleven', emoji:'🎵', photoLabels:['Overzicht','Alfama','Belém'] },
+const C=[
+{id:'ibiza',n:'Ibiza',co:'Spanje',fl:'🇪🇸',la:38.91,ln:1.43,sq:['Ibiza Dalt Vila old town aerial','Cala Conta Ibiza turquoise beach','Ibiza Pacha nightclub party'],is:1,cd:0,fh:2.3,b:1,bt:'sand',nl:5,cu:2,be:4,sz:'small',pp:150000,t:29,du:5,cl:4,bs:["Playa d'en Bossa","Cala Conta","Las Salinas","Cala Bassa"],de:'Het absolute feestmekka van Europa. Wereldberoemde clubs, witte dorpjes en turquoise baaien.',kn:['Pacha & Amnesia clubs','Café del Mar sunset','San Antonio strip','Boat parties'],ti:'Boek clubs ver van tevoren. Dagtrip naar Formentera is must.',vi:'🔥 Party • Strand • Eiland',em:'🎉',pl:['Overzicht','Strand','Nachtleven']},
+{id:'mallorca',n:'Mallorca',co:'Spanje',fl:'🇪🇸',la:39.57,ln:2.65,sq:['Palma de Mallorca cathedral harbor aerial','Cala dOr Mallorca crystal clear cove','Magaluf Mallorca nightlife bars'],is:1,cd:0,fh:2.3,b:1,bt:'sand',nl:4,cu:3,be:4,sz:'large',pp:430000,t:29,du:5,cl:3,bs:["Playa de Palma","Cala d'Or","Formentor","Cala Agulla"],de:'Grootste Balearen-eiland. Van party-bays in Magaluf tot stille coves en prachtig Palma.',kn:['Magaluf nachtleven','Palma kathedraal','Serra de Tramuntana'],ti:'Huur een auto voor de mooiste coves. Magaluf voor feest, noordkust voor rust.',vi:'🎉 Party • Strand • Eiland',em:'🏖️',pl:['Overzicht','Strand','Uitgaan']},
+{id:'menorca',n:'Menorca',co:'Spanje',fl:'🇪🇸',la:40.00,ln:3.83,sq:['Ciutadella Menorca harbor colorful houses','Cala Macarella Menorca turquoise water','Menorca sunset terrace relaxing'],is:1,cd:0,fh:2.3,b:1,bt:'sand',nl:2,cu:3,be:5,sz:'small',pp:95000,t:27,du:2,cl:2,bs:['Cala Macarella','Cala en Turqueta','Cala Pregonda'],de:'Rustig alternatief voor Ibiza. UNESCO biosfeerparkje, turquoise baaien.',kn:['Cala Macarella','Ciutadella','gin Xoriguer'],ti:'Huur een scooter om de coves te bereiken.',vi:'🌊 Rustig • Strand • Eiland',em:'🌊',pl:['Overzicht','Strand','Sfeer']},
+{id:'barcelona',n:'Barcelona',co:'Spanje',fl:'🇪🇸',la:41.39,ln:2.15,sq:['Barcelona skyline Sagrada Familia aerial sunset','Barceloneta beach summer crowds','Barcelona Gothic Quarter nightlife bars'],is:0,cd:1,dh:14,fh:2.1,b:1,bt:'sand',nl:5,cu:5,be:5,sz:'large',pp:1600000,t:27,du:4,cl:3,bs:['Barceloneta','Bogatell','Mar Bella'],de:'Gaudí, strand, Michelin-restaurants en clubs die pas beginnen om 3 uur.',kn:['Sagrada Família','Barceloneta','Ramblas','Razzmatazz'],ti:'Clubs beginnen na 01:00. Nacht: Gracia & Gothic Quarter.',vi:'🏙️ Cultuur • Strand • Nachtleven',em:'🏙️',pl:['Overzicht','Strand','Nachtleven']},
+{id:'sitges',n:'Sitges',co:'Spanje',fl:'🇪🇸',la:41.24,ln:1.81,sq:['Sitges Spain colorful seaside town aerial','Sitges beach promenade Mediterranean','Sitges bar terrace evening'],is:0,cd:1,dh:14,fh:2.1,b:1,bt:'sand',nl:3,cu:3,be:4,sz:'small',pp:28000,t:27,du:3,cl:3,bs:['Playa de la Ribera','San Sebastian'],de:'Charmant Catalaans kuststadje met kleurrijke architectuur en zandstranden.',kn:['Cava bars','Filmfestival','Promenade'],ti:'30 min van Barcelona. Veel rustiger.',vi:'🌊 Gezellig • Strand • Kust',em:'🎭',pl:['Overzicht','Strand','Sfeer']},
+{id:'valencia',n:'Valencia',co:'Spanje',fl:'🇪🇸',la:39.47,ln:-0.37,sq:['Valencia City of Arts Sciences sunset','Valencia Malvarrosa beach summer','Valencia Ruzafa tapas nightlife'],is:0,cd:0,fh:2.3,b:1,bt:'sand',nl:4,cu:4,be:4,sz:'large',pp:800000,t:29,du:3,cl:2,bs:['Playa de la Malvarrosa','El Saler'],de:'Geboorteplaats van paella. Futuristische architectuur en druk nachtleven.',kn:['Ciudad de las Artes','Las Fallas','Ruzafa wijk'],ti:'Ruzafa voor nachtleven. Eet pas na 22u.',vi:'🏙️ Stad • Strand • Eten',em:'🥘',pl:['Overzicht','Strand','Architectuur']},
+{id:'alicante',n:'Alicante',co:'Spanje',fl:'🇪🇸',la:38.35,ln:-0.49,sq:['Alicante castle harbor aerial view','Playa San Juan Alicante long sandy','Alicante old town tapas bars'],is:0,cd:0,fh:2.5,b:1,bt:'sand',nl:3,cu:3,be:3,sz:'medium',pp:330000,t:30,du:3,cl:2,bs:['Playa del Postiguet','Playa de San Juan'],de:'Zonnige stad met imposant kasteel en lange zandstranden.',kn:['Castillo Santa Bárbara','Explanada','Tapas barrio'],ti:'Goedkoper dan Ibiza/Barcelona. Kasteel gratis met lift.',vi:'☀️ Strand • Relaxed • Zon',em:'🏰',pl:['Overzicht','Strand','Kasteel']},
+{id:'benidorm',n:'Benidorm',co:'Spanje',fl:'🇪🇸',la:38.54,ln:-0.13,sq:['Benidorm skyline skyscrapers beach aerial','Benidorm Levante beach crowded summer','Benidorm strip nightlife neon'],is:0,cd:0,fh:2.5,b:1,bt:'sand',nl:4,cu:1,be:2,sz:'medium',pp:70000,t:30,du:4,cl:2,bs:['Playa de Levante','Playa de Poniente'],de:'Spaans Las Vegas aan zee. Torenhoge hotels en uitgaansleven 24/7.',kn:['Levante strand','Benidorm Palace','The Strip'],ti:'Levante vroeg voor goede plek. Goedkoop en no-nonsense.',vi:'🎪 Party • Strand • Zon',em:'🌇',pl:['Overzicht','Strand','Nachtleven']},
+{id:'sansebastian',n:'San Sebastián',co:'Spanje',fl:'🇪🇸',la:43.32,ln:-1.98,sq:['San Sebastian La Concha bay aerial panorama','La Concha beach San Sebastian golden sand','San Sebastian pintxos bar Parte Vieja'],is:0,cd:1,dh:11,fh:1.8,b:1,bt:'sand',nl:3,cu:4,be:5,sz:'medium',pp:186000,t:22,du:2,cl:3,bs:['La Concha','Zurriola (surf)','Ondarreta'],de:'Culinaire hoofdstad van Europa. Meeste Michelin-sterren per m².',kn:['Pintxos hop','La Concha baai','Michelin sterren'],ti:'Pintxos hoppen: 1 drankje + 1 pintxo per bar.',vi:'🐚 Cultuur • Strand • Eten',em:'🐚',pl:['Overzicht','Strand','Eten']},
+{id:'nice',n:'Nice',co:'Frankrijk',fl:'🇫🇷',la:43.71,ln:7.26,sq:['Nice France Promenade des Anglais aerial coast','Nice beach blue sea Mediterranean','Nice old town Cours Saleya market evening'],is:0,cd:1,dh:12,fh:1.8,b:1,bt:'pebble',nl:3,cu:4,be:5,sz:'large',pp:340000,t:28,du:3,cl:4,bs:['Promenade des Anglais','Villefranche-sur-Mer'],de:'Koningin van de Côte d\'Azur. Chique sfeer en Monaco om de hoek.',kn:['Promenade des Anglais','Cours Saleya','Monaco dagtrip'],ti:'Gratis keistranden. Train naar Monaco: 30 min.',vi:'💎 Luxe • Kust • Cultuur',em:'💎',pl:['Overzicht','Kust','Markt']},
+{id:'marseille',n:'Marseille',co:'Frankrijk',fl:'🇫🇷',la:43.30,ln:5.37,sq:['Marseille Vieux Port Notre Dame aerial','Calanques Marseille turquoise kayak','Marseille Vieux Port restaurants evening'],is:0,cd:1,dh:11,fh:1.7,b:1,bt:'mixed',nl:3,cu:4,be:4,sz:'large',pp:870000,t:29,du:1,cl:2,bs:['Les Calanques','Plage du Prado'],de:'Ruige havenstad met spectaculaire Calanques. Verrast iedereen.',kn:['Calanques park','Vieux-Port','bouillabaisse','MuCEM'],ti:'Kajakken door de Calanques is de highlight.',vi:'⚓ Authentiek • Natuur • Cultuur',em:'⚓',pl:['Haven','Calanques','Stad']},
+{id:'cannes',n:'Cannes',co:'Frankrijk',fl:'🇫🇷',la:43.55,ln:7.02,sq:['Cannes La Croisette aerial yachts palm trees','Cannes beach La Croisette blue umbrellas','Cannes yacht harbor luxury evening'],is:0,cd:1,dh:12,fh:1.8,b:1,bt:'mixed',nl:4,cu:4,be:5,sz:'medium',pp:75000,t:28,du:2,cl:4,bs:['La Croisette','Plage du Midi'],de:'Filmsterren, jachten en glamour. Mooiste boulevard van de Rivièra.',kn:['Filmfestival','La Croisette','Jachthaven'],ti:'Gratis strand bij Plage du Midi.',vi:'🎬 Glamour • Strand • Luxe',em:'🎬',pl:['Croisette','Strand','Sfeer']},
+{id:'rimini',n:'Rimini',co:'Italië',fl:'🇮🇹',la:44.06,ln:12.57,sq:['Rimini Italy aerial beach coastline','Rimini sandy beach colorful umbrellas','Rimini boardwalk nightlife bars'],is:0,cd:1,dh:13,fh:2.0,b:1,bt:'sand',nl:4,cu:3,be:3,sz:'medium',pp:155000,t:28,du:3,cl:2,bs:['15km zandstrand','Riccione'],de:'Italiaans strandparadijs. Enorm zandstrand met beach clubs.',kn:['Notte Rosa','beach clubs','Fellini'],ti:'Notte Rosa in juli: roze nacht, gratis feest.',vi:'🇮🇹 Strand • Nachtleven',em:'🇮🇹',pl:['Stad','Strand','Sfeer']},
+{id:'jesolo',n:'Jesolo',co:'Italië',fl:'🇮🇹',la:45.54,ln:12.64,sq:['Lido di Jesolo aerial long beach','Jesolo beach sand umbrellas Adriatic','Jesolo beach bars sunset aperitivo'],is:0,cd:1,dh:12,fh:2.0,b:1,bt:'sand',nl:3,cu:2,be:3,sz:'small',pp:26000,t:28,du:4,cl:2,bs:['Lido di Jesolo (15km)'],de:'Populaire Italiaanse badplaats vlak bij Venetië.',kn:['Zandstrand','Venetië dagtrip','beach bars'],ti:'Boot naar Venetië (1u). Veel NL gesproken.',vi:'🏊 Strand • Relaxed',em:'🏊',pl:['Strand','Venetië','Sfeer']},
+{id:'rome',n:'Rome',co:'Italië',fl:'🇮🇹',la:41.90,ln:12.50,sq:['Rome Colosseum aerial sunset golden light','Ostia beach Rome seaside','Trastevere Rome restaurants cobblestone evening'],is:0,cd:1,dh:16,fh:2.4,b:0,bt:'none',nl:3,cu:5,be:5,sz:'large',pp:2800000,t:31,du:4,cl:3,bs:['Ostia (30km)'],de:'De Eeuwige Stad. Cultuur op elk straathoek, heerlijk eten.',kn:['Colosseum','Vaticaan','Trastevere','Fontana di Trevi'],ti:'Augustus rustigst. Trastevere voor eten.',vi:'🏛️ Cultuur • Stad • Historie',em:'🏛️',pl:['Overzicht','Colosseum','Trastevere']},
+{id:'amalfi',n:'Amalfikust',co:'Italië',fl:'🇮🇹',la:40.63,ln:14.60,sq:['Positano Amalfi Coast colorful cliffs aerial','Positano beach umbrellas Amalfi','Amalfi Coast terrace lemon dinner view'],is:0,cd:1,dh:18,fh:2.5,b:1,bt:'pebble',nl:2,cu:4,be:5,sz:'small',pp:5000,t:30,du:3,cl:4,bs:['Marina di Praia','Positano','Ravello'],de:'Meest fotogenieke kust ter wereld. Pastelkleurige dorpjes op kliffen.',kn:['Positano','Ravello','limoncello'],ti:'Neem ferry of bus. Vroeg opstaan voor rust.',vi:'🌺 Mooi • Rustig • Natuur',em:'🌺',pl:['Kust','Positano','Strand']},
+{id:'sardinia',n:'Sardinië',co:'Italië',fl:'🇮🇹',la:39.22,ln:9.12,sq:['Sardinia Costa Smeralda aerial turquoise','La Pelosa beach Sardinia white sand turquoise','Sardinia coastal village restaurant harbor'],is:1,cd:0,fh:2.5,b:1,bt:'sand',nl:2,cu:3,be:5,sz:'medium',pp:150000,t:30,du:2,cl:3,bs:['La Pelosa','Cala Luna','Costa Smeralda'],de:'Caribisch blauw water, poederachtig wit zand.',kn:['Costa Smeralda','La Pelosa','Nuraghe ruïnes'],ti:'La Pelosa: reserveer online. Zuidkust goedkoper.',vi:'🌊 Rustig • Natuur • Paradijs',em:'🌊',pl:['Overzicht','La Pelosa','Costa Smeralda']},
+{id:'sicily',n:'Sicilië',co:'Italië',fl:'🇮🇹',la:37.60,ln:14.01,sq:['Taormina Sicily Etna background aerial','Scala dei Turchi Sicily white cliffs beach','Cefalu Sicily street market food'],is:1,cd:0,fh:2.8,b:1,bt:'mixed',nl:2,cu:5,be:5,sz:'large',pp:670000,t:31,du:2,cl:2,bs:['Scala dei Turchi','San Vito Lo Capo','Cefalù'],de:'Etna, Griekse tempels en de beste granita ter wereld.',kn:['Etna','Taormina','arancini','Cefalù'],ti:'Taormina + Etna = epische dag.',vi:'🌋 Cultuur • Authentiek',em:'🌋',pl:['Overzicht','Strand','Etna']},
+{id:'split',n:'Split',co:'Kroatië',fl:'🇭🇷',la:43.51,ln:16.44,sq:['Split Croatia Diocletian Palace aerial harbor','Bacvice beach Split Croatia','Split Riva promenade bars evening'],is:0,cd:1,dh:15,fh:2.3,b:1,bt:'pebble',nl:4,cu:4,be:5,sz:'medium',pp:178000,t:30,du:4,cl:2,bs:['Bačvice','Kašjuni','Žnjan'],de:'Middeleeuwse stad in een Romeins paleis, ferry naar eilanden.',kn:['Diocletiaan Paleis','Bačvice picigin','Riva','Ferry Hvar'],ti:'Slaap in het paleis. Hvar dagtrip: 1 uur.',vi:'🏛️ Cultuur • Strand • Nachtleven',em:'🏛️',pl:['Paleis','Strand','Nachtleven']},
+{id:'dubrovnik',n:'Dubrovnik',co:'Kroatië',fl:'🇭🇷',la:42.65,ln:18.09,sq:['Dubrovnik old town walls aerial Adriatic','Banje beach Dubrovnik old town','Dubrovnik Stradun evening restaurants'],is:0,cd:1,dh:17,fh:2.5,b:1,bt:'pebble',nl:3,cu:5,be:5,sz:'small',pp:42000,t:30,du:4,cl:3,bs:['Banje Beach','Sveti Jakov','Lokrum'],de:'Game of Thrones-stad. Stadsmuren boven kristalhelder water.',kn:['Stadsmuren','Stradun','GoT locaties','Lokrum'],ti:'Muren wandelen vroeg (08:00) voor hitte.',vi:'🏰 Cultuur • Strand • Prachtig',em:'🏰',pl:['Stadsmuren','Strand','Overzicht']},
+{id:'hvar',n:'Hvar',co:'Kroatië',fl:'🇭🇷',la:43.17,ln:16.44,sq:['Hvar town Croatia harbor aerial lavender','Pakleni islands Hvar crystal clear boats','Hula Hula beach bar Hvar sunset party'],is:1,cd:0,fh:2.5,b:1,bt:'pebble',nl:5,cu:3,be:5,sz:'small',pp:13000,t:30,du:3,cl:3,bs:['Pakleni otoci','Dubovica','Hvar town'],de:'Meest exclusieve eiland van Kroatië. Lavendel, kristalhelder water en nightlife.',kn:['Hula Hula sunset','Carpe Diem','Pakleni eilanden'],ti:'Pakleni eilanden: huur bootje. Hula Hula voor sunset.',vi:'💜 Party • Strand • Eiland',em:'💜',pl:['Overzicht','Strand','Nachtleven']},
+{id:'zadar',n:'Zadar',co:'Kroatië',fl:'🇭🇷',la:44.12,ln:15.23,sq:['Zadar Croatia old town peninsula aerial','Nin sandy beach Zadar Croatia','Zadar Sea Organ sunset light installation'],is:0,cd:1,dh:14,fh:2.2,b:1,bt:'pebble',nl:2,cu:4,be:4,sz:'medium',pp:75000,t:28,du:2,cl:1,bs:['Kolovare','Nin (zandstrand)'],de:'Authentieke stad met het Zee-orgel en mooiste zonsondergang.',kn:['Zee-orgel','Begroeting van de Zon','Plitvice dagtrip'],ti:'Goedkoopste Kroatische kust. Plitvice: 2 uur.',vi:'🎵 Authentiek • Rustig',em:'🎵',pl:['Stad','Zee-orgel','Omgeving']},
+{id:'rovinj',n:'Rovinj',co:'Kroatië',fl:'🇭🇷',la:45.08,ln:13.64,sq:['Rovinj Croatia old town peninsula aerial','Rovinj Zlatni rt beach pine trees crystal','Rovinj harbor restaurants sunset Istria'],is:0,cd:1,dh:12,fh:1.8,b:1,bt:'pebble',nl:2,cu:4,be:5,sz:'small',pp:14000,t:27,du:3,cl:2,bs:['Kuvi','Zlatni rt park'],de:'Mooiste stadje van Istrië. Pastelkleurige huisjes op schiereiland.',kn:['Sant\'Eufemia kerk','Zlatni rt','Lim fjord','truffels'],ti:'Zonsopgang vanuit de kerk. Dagtrip Pula (40min).',vi:'🎨 Romantisch • Rustig',em:'🎨',pl:['Haven','Stad','Natuur']},
+{id:'pula',n:'Pula',co:'Kroatië',fl:'🇭🇷',la:44.87,ln:13.85,sq:['Pula Arena Roman amphitheater aerial','Cape Kamenjak beach turquoise Pula','Pula Arena summer concert evening'],is:0,cd:1,dh:12,fh:1.8,b:1,bt:'pebble',nl:2,cu:5,be:4,sz:'medium',pp:57000,t:27,du:2,cl:1,bs:['Punta Verudela','Premantura','Brijuni'],de:'Romeins amfitheater van 2000 jaar oud — concerten in de zomer.',kn:['Pula Arena','Brijuni eilanden','Istrische keuken'],ti:'Arena concerten: boek vroeg. Brijuni per boot.',vi:'🏟️ Cultuur • Rustig',em:'🏟️',pl:['Arena','Kust','Stad']},
+{id:'mykonos',n:'Mykonos',co:'Griekenland',fl:'🇬🇷',la:37.45,ln:25.33,sq:['Mykonos windmills white blue aerial','Paradise Beach Mykonos party turquoise','Mykonos Little Venice sunset cocktails'],is:1,cd:0,fh:3.5,b:1,bt:'sand',nl:5,cu:2,be:5,sz:'small',pp:10000,t:27,du:4,cl:5,bs:['Paradise Beach','Super Paradise','Psarou'],de:'Glamour-eiland. Wit en blauw, dag-party beaches.',kn:['Paradise Beach party','windmolens','Little Venice'],ti:'Duurst Grieks eiland. Psarou voor VIP.',vi:'⚡ Party • Strand • Luxe',em:'⚡',pl:['Overzicht','Strand','Little Venice']},
+{id:'santorini',n:'Santorini',co:'Griekenland',fl:'🇬🇷',la:36.39,ln:25.46,sq:['Santorini Oia blue domes caldera sunset','Perissa black sand beach Santorini','Santorini Oia sunset terrace wine'],is:1,cd:0,fh:4.0,b:1,bt:'mixed',nl:2,cu:3,be:5,sz:'small',pp:15000,t:27,du:4,cl:4,bs:['Perissa','Red Beach','Kamari'],de:'Meest gefotografeerd eiland. Blauwe koepels en vulkaanlandschappen.',kn:['Oia zonsondergang','blauwe koepels','caldera'],ti:'Oia in juni/sept rustiger. Fira-Oia pad: 10km.',vi:'🌅 Prachtig • Romantisch',em:'🌅',pl:['Oia','Strand','Caldera']},
+{id:'rhodes',n:'Rhodos',co:'Griekenland',fl:'🇬🇷',la:36.43,ln:28.22,sq:['Rhodes old town medieval walls harbor aerial','Lindos beach turquoise acropolis Rhodes','Rhodes old town restaurant evening'],is:1,cd:0,fh:3.5,b:1,bt:'sand',nl:3,cu:4,be:4,sz:'medium',pp:115000,t:28,du:3,cl:2,bs:['Faliraki','Lindos','Tsambika'],de:'Middeleeuwse stad, zandstranden en Faliraki nachtleven.',kn:['Oude Stad UNESCO','Lindos','Faliraki'],ti:'Lindos vroeg. Rhodos stad is UNESCO.',vi:'🗡️ Cultuur • Strand',em:'🗡️',pl:['Oude Stad','Lindos','Strand']},
+{id:'corfu',n:'Corfu',co:'Griekenland',fl:'🇬🇷',la:39.62,ln:19.92,sq:['Corfu old town fortress aerial green island','Paleokastritsa Corfu beach turquoise cliffs','Corfu Liston square cafe Venetian'],is:1,cd:0,fh:3.0,b:1,bt:'mixed',nl:3,cu:3,be:4,sz:'medium',pp:39000,t:29,du:3,cl:2,bs:['Sidari','Glyfada','Paleokastritsa','Kavos'],de:'Groen eiland met Venetiaanse architectuur en Kavos.',kn:['Kavos nachtleven','Oud Fort','Achilleion'],ti:'Kavos voor party. Huur scooter.',vi:'🌿 Natuur • Strand',em:'🌿',pl:['Overzicht','Natuur','Kavos']},
+{id:'crete',n:'Kreta',co:'Griekenland',fl:'🇬🇷',la:35.24,ln:25.02,sq:['Chania Crete Venetian harbor lighthouse','Elafonissi beach Crete pink sand lagoon','Chania old town harbor restaurant evening'],is:1,cd:0,fh:3.5,b:1,bt:'sand',nl:3,cu:4,be:4,sz:'large',pp:175000,t:29,du:3,cl:2,bs:['Elafonissi','Balos','Matala'],de:'Grootste Griekse eiland. Roze zandstranden en fantastisch eten.',kn:['Knossos','Elafonissi','Samaria kloof'],ti:'Elafonissi vroeg of laat. Huur auto.',vi:'🐂 Cultuur • Strand • Natuur',em:'🐂',pl:['Overzicht','Elafonissi','Knossos']},
+{id:'zakynthos',n:'Zakynthos',co:'Griekenland',fl:'🇬🇷',la:37.78,ln:20.89,sq:['Navagio shipwreck beach Zakynthos aerial','Navagio beach turquoise boats Zakynthos','Zakynthos Laganas beach bar sunset'],is:1,cd:0,fh:3.0,b:1,bt:'sand',nl:3,cu:2,be:5,sz:'small',pp:10000,t:30,du:3,cl:2,bs:['Navagio','Gerakas','Laganas'],de:'Iconisch Scheepswrak-strand. Kristalhelder water en zeeschildpadden.',kn:['Navagio','Blauwe Grotten','Caretta schildpadden'],ti:'Navagio per boot (30 min).',vi:'⛵ Prachtig • Strand',em:'⛵',pl:['Navagio','Strand','Natuur']},
+{id:'budva',n:'Budva',co:'Montenegro',fl:'🇲🇪',la:42.28,ln:18.84,sq:['Budva Montenegro old town aerial peninsula','Mogren beach Budva Montenegro cliffs turquoise','Budva citadel old town restaurants evening'],is:0,cd:1,dh:17,fh:2.5,b:1,bt:'sand',nl:3,cu:3,be:4,sz:'small',pp:19000,t:29,du:1,cl:1,bs:['Slovenska plaža','Mogren','Sveti Stefan'],de:'Balkans best bewaarde geheim. Middeleeuwse stad — spotgoedkoop.',kn:['Budva citadel','Sveti Stefan','Ultra-laag prijzen'],ti:'Goedkoopste Adriatische kust.',vi:'🗺️ Verborgen • Strand',em:'🗺️',pl:['Oude Stad','Strand','Sveti Stefan']},
+{id:'ksamil',n:'Ksamil',co:'Albanië',fl:'🇦🇱',la:39.77,ln:20.01,sq:['Ksamil Albania aerial islands turquoise','Ksamil beach Albania crystal clear Caribbean','Ksamil Albania beach restaurant fish sunset'],is:0,cd:1,dh:19,fh:2.5,b:1,bt:'sand',nl:1,cu:2,be:5,sz:'village',pp:3000,t:29,du:1,cl:1,bs:['Ksamil strand','Mirror Beach','3 Islands'],de:'Albanees paradijs. Water als de Malediven — spotgoedkoop.',kn:['Caribisch blauw water','Butrint UNESCO','Lage prijzen'],ti:'Griekse grens is 10 min. Butrint dagtrip.',vi:'💎 Verborgen • Strand',em:'💎',pl:['Strand','Water','Omgeving']},
+{id:'malta',n:'Malta',co:'Malta',fl:'🇲🇹',la:35.90,ln:14.51,sq:['Valletta Malta aerial harbor golden fortifications','Blue Lagoon Comino Malta turquoise boats','Valletta Malta Baroque street cafe'],is:1,cd:0,fh:3.0,b:1,bt:'rocky',nl:3,cu:5,be:4,sz:'medium',pp:115000,t:32,du:2,cl:2,bs:['Golden Bay','Blue Lagoon Comino'],de:'UNESCO geschiedenis, Blue Lagoon en Paceville.',kn:['Valletta','Blue Lagoon','Paceville','Mdina'],ti:'Blue Lagoon vroeg (08:30).',vi:'🔱 Cultuur • Strand',em:'🔱',pl:['Valletta','Blue Lagoon','Kust']},
+{id:'ayianapa',n:'Ayia Napa',co:'Cyprus',fl:'🇨🇾',la:34.99,ln:34.00,sq:['Ayia Napa Cyprus aerial coastline sea caves','Nissi Beach Ayia Napa turquoise shallow','Ayia Napa nightlife clubs neon strip'],is:1,cd:0,fh:4.0,b:1,bt:'sand',nl:5,cu:1,be:3,sz:'small',pp:33000,t:34,du:2,cl:2,bs:['Nissi Beach','Makronissos','Fig Tree Bay'],de:'Ultieme party destination. Nissi Beach is dé dag-party beach.',kn:['Nissi Beach','Castle Club','foam parties'],ti:'Nissi Beach: dag én nacht. Cape Greco voor rust.',vi:'🔊 Party • Strand • Zon',em:'🔊',pl:['Overzicht','Nissi Beach','Sfeer']},
+{id:'bodrum',n:'Bodrum',co:'Turkije',fl:'🇹🇷',la:37.03,ln:27.43,sq:['Bodrum castle harbor white houses aerial','Bodrum Bitez beach turquoise Aegean boats','Bodrum marina restaurants bars nightlife'],is:0,cd:0,fh:3.8,b:1,bt:'sand',nl:4,cu:3,be:4,sz:'medium',pp:37000,t:32,du:2,cl:2,bs:['Gümüşlük','Bitez','Turgutreis'],de:'Turquoise lagunes, witte huisjes en party-boats.',kn:['Halikarnas club','Castle of St. Peter','gulet cruise'],ti:'Gulet trip is de highlight. Gümüşlük voor rust.',vi:'🛥️ Party • Strand • Warm',em:'🛥️',pl:['Haven','Kasteel','Strand']},
+{id:'algarve',n:'Algarve',co:'Portugal',fl:'🇵🇹',la:37.02,ln:-7.93,sq:['Algarve Portugal golden cliffs aerial Praia Marinha','Benagil cave beach Algarve turquoise','Algarve beach bar sunset cocktails terrace'],is:0,cd:0,fh:2.6,b:1,bt:'sand',nl:3,cu:3,be:5,sz:'medium',pp:60000,t:26,du:4,cl:2,bs:['Praia da Marinha','Benagil grot','Meia Praia'],de:'Spectaculaire zandsteenkliffen en gouden stranden.',kn:['Benagil grot','Sagres kaap','Albufeira'],ti:'Benagil vroeg kajakken. Cooler dan Spanje in augustus.',vi:'🏔️ Strand • Kliffen • Relaxed',em:'🏔️',pl:['Kliffen','Benagil','Strand']},
+{id:'lagos',n:'Lagos',co:'Portugal',fl:'🇵🇹',la:37.10,ln:-8.67,sq:['Lagos Portugal Ponta da Piedade cliffs aerial golden','Praia do Camilo Lagos turquoise stairs cliff','Lagos Portugal old town rooftop bars evening'],is:0,cd:0,fh:2.6,b:1,bt:'sand',nl:4,cu:3,be:5,sz:'small',pp:31000,t:26,du:4,cl:2,bs:['Praia do Camilo','Praia Dona Ana','Meia Praia (4km)','Ponta da Piedade'],de:'Algarve op zijn allerbest. Spectaculaire rotskliffen, verborgen strandjes en een centrum vol bars.',kn:['Ponta da Piedade','Praia do Camilo','Backpacker nightlife','Kayak grotten'],ti:'Ponta da Piedade bij zonsopgang. Kayak de grotten. Compact centrum met goede bars.',vi:'🌅 Strand • Kliffen • Nachtleven',em:'🌅',pl:['Ponta da Piedade','Praia do Camilo','Centrum']},
+{id:'lisbon',n:'Lissabon',co:'Portugal',fl:'🇵🇹',la:38.72,ln:-9.14,sq:['Lisbon aerial red rooftops Alfama Tagus','Cascais beach Lisbon coast sandy','Lisbon Bairro Alto nightlife street bars'],is:0,cd:0,fh:2.7,b:0,bt:'none',nl:4,cu:5,be:5,sz:'large',pp:550000,t:28,du:3,cl:2,bs:['Cascais (35km)','Costa da Caparica'],de:'Heuvels, pasteis de nata, Fado en nachtleven tot zonsopgang.',kn:['Belém toren','Alfama','pastéis de nata','LUX Frágil'],ti:'Tram 28 door Alfama. Nachtleven laat (01:00+).',vi:'🎵 Cultuur • Stad • Nachtleven',em:'🎵',pl:['Overzicht','Alfama','Belém']},
 ];
 
-// ============================================================
-// MULTI-SELECT QUESTIONS
-// ============================================================
-const QUESTIONS = [
-  { id:'travel', title:'Hoe gaan jullie erheen?', sub:'Dit filtert welke steden bereikbaar zijn.', multi:false,
-    options:[{v:'fly',icon:'✈️',l:'Vliegen'},{v:'car',icon:'🚗',l:'Auto (≤15u)'},{v:'any',icon:'🤷',l:'Maakt niet uit'}]},
-  { id:'beach', title:'Hoe belangrijk is strand?', sub:'Must-have sluit steden zonder strand uit.', multi:false,
-    options:[{v:'must',icon:'🏖️',l:'Absoluut must'},{v:'nice',icon:'👌',l:'Leuk maar niet verplicht'},{v:'no',icon:'🌆',l:'Strand boeit ons niet'}]},
-  { id:'beachtype', title:'Welk type strand?', sub:'Zand = zacht. Kei = helderder water.', multi:false,
-    options:[{v:'sand',icon:'🟡',l:'Zandstrand'},{v:'any',icon:'💦',l:'Kei/rots ook prima'}]},
-  { id:'nightlife', title:'Nachtleven niveau?', sub:'Kies alles wat jullie aanspreekt.', multi:true,
-    options:[{v:'ibiza',icon:'🔥',l:'Ibiza-level'},{v:'active',icon:'🎉',l:'Actief & clubs'},{v:'chill',icon:'🍻',l:'Terrasjes & bars'},{v:'quiet',icon:'😴',l:'Rustig & vroeg bed'}]},
-  { id:'vibe', title:'Wat voor vakantiesfeer?', sub:'Meerdere mogen.', multi:true,
-    options:[{v:'beach',icon:'🌊',l:'Beach & zon'},{v:'city',icon:'🏙️',l:'City & cultuur'},{v:'party',icon:'🥂',l:'Feesten'},{v:'nature',icon:'🥾',l:'Natuur & avontuur'},{v:'food',icon:'🍽️',l:'Eten & drinken'},{v:'romance',icon:'💑',l:'Romantisch'}]},
-  { id:'island', title:'Eiland of vasteland?', sub:'Eilanden zijn altijd per vliegtuig.', multi:false,
-    options:[{v:'island',icon:'🏝️',l:'Eiland'},{v:'mainland',icon:'🗺️',l:'Vasteland'},{v:'any',icon:'🤷',l:'Maakt niet uit'}]},
-  { id:'size', title:'Hoe groot?', sub:'Van rustig dorp tot grote stad.', multi:true,
-    options:[{v:'small',icon:'🏡',l:'Klein dorp'},{v:'medium',icon:'🏘️',l:'Middelgroot'},{v:'large',icon:'🏙️',l:'Grote stad'},{v:'any',icon:'🤷',l:'Maakt niet uit'}]},
-  { id:'culture', title:'Cultuur & bezichtigen?', sub:'Musea, oude steden, tempels.', multi:false,
-    options:[{v:'yes',icon:'🏛️',l:'Ja, belangrijk'},{v:'bit',icon:'👌',l:'Beetje'},{v:'no',icon:'🎢',l:'Nee — zon en fun'}]},
-  { id:'temp', title:'Temperatuur in augustus?', sub:'Op basis van echte data.', multi:false,
-    options:[{v:'mild',icon:'🌤️',l:'Aangenaam 22–27°'},{v:'warm',icon:'☀️',l:'Warm 27–31°'},{v:'hot',icon:'🔥',l:'Zo heet mogelijk 31°+'}]},
-  { id:'budget', title:'Wat is jullie budget?', sub:'Puur als richtlijn — alles is relatief.', multi:false,
-    options:[{v:'low',icon:'💶',l:'Zo goedkoop mogelijk'},{v:'mid',icon:'💳',l:'Gemiddeld'},{v:'high',icon:'💎',l:'Budget is geen issue'}]},
-  { id:'dutch', title:'Nederlanders om je heen?', sub:'Meer NL = herkenbaarder. Minder = avontuurlijker.', multi:false,
-    options:[{v:'love',icon:'🇳🇱',l:'Gezellig, graag!'},{v:'neutral',icon:'😐',l:'Maakt niet uit'},{v:'avoid',icon:'🌍',l:'Liever internationaal'}]},
-  { id:'avoid', title:'Wat wil je juist NIET?', sub:'Meerdere mogen.', multi:true,
-    options:[{v:'crowds',icon:'😤',l:'Massa toerisme'},{v:'cold',icon:'🥶',l:'Te koud water'},{v:'noparty',icon:'🚫',l:'Te veel party sfeer'},{v:'expensive',icon:'💸',l:'Duur'},{v:'far',icon:'✈️',l:'Lang vliegen (3u+)'}]},
+// Expand compressed city data
+const CITIES=C.map(c=>({id:c.id,name:c.n,country:c.co,flag:c.fl,lat:c.la,lng:c.ln,searchQueries:{overview:c.sq[0],beach:c.sq[1],vibe:c.sq[2]},
+  island:!!c.is,canDrive:!!c.cd,driveH:c.dh||0,flyH:c.fh,beach:!!c.b,beachType:c.bt,nightlife:c.nl,culture:c.cu,beauty:c.be,
+  size:c.sz,pop:c.pp,tempAug:c.t,dutch:c.du,costLevel:c.cl,beaches:c.bs,desc:c.de,known:c.kn,tips:c.ti,vibes:c.vi,emoji:c.em,photoLabels:c.pl}));
+
+const QUESTIONS=[
+{id:'travel',title:'Hoe gaan jullie erheen?',sub:'Dit filtert bereikbare steden.',multi:false,options:[{v:'fly',icon:'✈️',l:'Vliegen'},{v:'car',icon:'🚗',l:'Auto (≤15u)'},{v:'any',icon:'🤷',l:'Maakt niet uit'}]},
+{id:'beach',title:'Hoe belangrijk is strand?',sub:'Must-have sluit steden zonder strand uit.',multi:false,options:[{v:'must',icon:'🏖️',l:'Absoluut must'},{v:'nice',icon:'👌',l:'Leuk maar niet verplicht'},{v:'no',icon:'🌆',l:'Boeit ons niet'}]},
+{id:'beachtype',title:'Welk type strand?',sub:'Zand = zacht. Kei = helderder water.',multi:false,options:[{v:'sand',icon:'🟡',l:'Zandstrand'},{v:'any',icon:'💦',l:'Kei/rots ook prima'}]},
+{id:'nightlife',title:'Nachtleven niveau?',sub:'Kies alles wat past.',multi:true,options:[{v:'ibiza',icon:'🔥',l:'Ibiza-level'},{v:'active',icon:'🎉',l:'Actief & clubs'},{v:'chill',icon:'🍻',l:'Terrasjes & bars'},{v:'quiet',icon:'😴',l:'Rustig'}]},
+{id:'vibe',title:'Wat voor vakantiesfeer?',sub:'Meerdere mogen.',multi:true,options:[{v:'beach',icon:'🌊',l:'Beach & zon'},{v:'city',icon:'🏙️',l:'City & cultuur'},{v:'party',icon:'🥂',l:'Feesten'},{v:'nature',icon:'🥾',l:'Natuur'},{v:'food',icon:'🍽️',l:'Eten & drinken'},{v:'romance',icon:'💑',l:'Romantisch'}]},
+{id:'island',title:'Eiland of vasteland?',sub:'Eilanden altijd per vliegtuig.',multi:false,options:[{v:'island',icon:'🏝️',l:'Eiland'},{v:'mainland',icon:'🗺️',l:'Vasteland'},{v:'any',icon:'🤷',l:'Maakt niet uit'}]},
+{id:'size',title:'Hoe groot?',sub:'Van dorp tot grote stad.',multi:true,options:[{v:'small',icon:'🏡',l:'Klein'},{v:'medium',icon:'🏘️',l:'Middelgroot'},{v:'large',icon:'🏙️',l:'Grote stad'},{v:'any',icon:'🤷',l:'Maakt niet uit'}]},
+{id:'culture',title:'Cultuur & bezichtigen?',sub:'Musea, oude steden.',multi:false,options:[{v:'yes',icon:'🏛️',l:'Ja, belangrijk'},{v:'bit',icon:'👌',l:'Beetje'},{v:'no',icon:'🎢',l:'Nee — zon en fun'}]},
+{id:'temp',title:'Temperatuur in augustus?',sub:'Echte data.',multi:false,options:[{v:'mild',icon:'🌤️',l:'Aangenaam 22–27°'},{v:'warm',icon:'☀️',l:'Warm 27–31°'},{v:'hot',icon:'🔥',l:'Zo heet mogelijk'}]},
+{id:'budget',title:'Budget?',sub:'Puur als richtlijn.',multi:false,options:[{v:'low',icon:'💶',l:'Zo goedkoop mogelijk'},{v:'mid',icon:'💳',l:'Gemiddeld'},{v:'high',icon:'💎',l:'Geen issue'}]},
+{id:'dutch',title:'Nederlanders om je heen?',sub:'Meer NL = herkenbaarder.',multi:false,options:[{v:'love',icon:'🇳🇱',l:'Gezellig!'},{v:'neutral',icon:'😐',l:'Maakt niet uit'},{v:'avoid',icon:'🌍',l:'Liever internationaal'}]},
+{id:'avoid',title:'Wat wil je NIET?',sub:'Meerdere mogen.',multi:true,options:[{v:'crowds',icon:'😤',l:'Massa toerisme'},{v:'cold',icon:'🥶',l:'Koud water'},{v:'noparty',icon:'🚫',l:'Te veel party'},{v:'expensive',icon:'💸',l:'Duur'},{v:'far',icon:'✈️',l:'Lang vliegen (3u+)'}]},
 ];
 
-// ============================================================
-// APP STATE
-// ============================================================
-let answers = {}, currentQ = 0, swipeQueue = [], swipeIdx = 0;
-let likedCities = new Set(), leafletMap = null, galleryIdx = 0, modalCity = null;
-let dragStartX = 0, dragging = false, dragX = 0;
+let answers={},currentQ=0,currentRound=0;
+const ROUNDS=['overview','beach','vibe'],ROUND_NAMES=['🏙️ De plek','🏖️ Het strand','🌙 De vibe'],ROUND_DESCS=['Hoe ziet de bestemming eruit?','Hoe is het strand?','Wat is de sfeer & het nachtleven?'];
+let activeCities=[],roundLikes={},swipeQueue=[],swipeIdx=0;
+let leafletMap=null,galleryIdx=0,modalCity=null,dragStartX=0,dragging=false,dragX=0,dragInited=false;
 
-// ============================================================
-// SCREEN
-// ============================================================
-function show(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+
+function startQuestions(){currentQ=0;answers={};show('s-questions');renderQ();}
+function renderQ(){
+  const q=QUESTIONS[currentQ];
+  if(q.id==='beachtype'&&answers.beach==='no'){answers.beachtype='any';currentQ++;renderQ();return;}
+  document.getElementById('prog-fill').style.width=((currentQ/QUESTIONS.length)*100)+'%';
+  const nb=document.getElementById('btn-next');
+  const has=q.multi?(answers[q.id]?.length>0):!!answers[q.id];
+  nb.disabled=!has;nb.textContent=currentQ===QUESTIONS.length-1?'Naar swipen 👇':'Volgende →';
+  document.getElementById('q-container').innerHTML=`<div class="q-step">Vraag ${currentQ+1}/${QUESTIONS.length}</div><div class="q-title">${q.title}</div><div class="q-sub">${q.sub}</div>${q.multi?'<div class="multi-hint">✦ Meerdere keuzes mogelijk</div>':''}<div class="options-grid" id="opts"></div>`;
+  const grid=document.getElementById('opts');
+  q.options.forEach(opt=>{const btn=document.createElement('button');btn.className='opt-btn';
+    const sel=q.multi?(answers[q.id]||[]).includes(opt.v):answers[q.id]===opt.v;if(sel)btn.classList.add('selected');
+    btn.innerHTML=`<span style="font-size:1.05rem">${opt.icon}</span> ${opt.l}`;
+    btn.onclick=()=>{if(q.multi){if(!answers[q.id])answers[q.id]=[];const i=answers[q.id].indexOf(opt.v);
+      if(i>=0){answers[q.id].splice(i,1);btn.classList.remove('selected');}else{answers[q.id].push(opt.v);btn.classList.add('selected');}
+      nb.disabled=answers[q.id].length===0;}else{answers[q.id]=opt.v;document.querySelectorAll('.opt-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');nb.disabled=false;}};
+    grid.appendChild(btn);});
 }
+function nextQ(){const q=QUESTIONS[currentQ];const has=q.multi?(answers[q.id]?.length>0):!!answers[q.id];if(!has)return;if(currentQ<QUESTIONS.length-1){currentQ++;renderQ();}else beginSwipeFlow();}
+function prevQ(){if(currentQ>0){currentQ--;renderQ();}else show('s-hero');}
+function skipToSwipe(){beginSwipeFlow();}
 
-// ============================================================
-// QUESTIONS
-// ============================================================
-function startQuestions() { currentQ = 0; answers = {}; show('s-questions'); renderQ(); }
+function hardFilter(c){
+  if(answers.travel==='car'){if(c.island)return false;if(!c.canDrive||c.driveH>15)return false;}
+  if(answers.beach==='must'&&!c.beach)return false;
+  if(answers.beach!=='no'&&answers.beachtype==='sand'&&c.beach&&(c.beachType==='pebble'||c.beachType==='rocky'))return false;
+  if(answers.island==='island'&&!c.island)return false;
+  if(answers.island==='mainland'&&c.island)return false;
+  const av=answers.avoid||[];
+  if(av.includes('far')&&c.flyH>3)return false;
+  if(av.includes('expensive')&&c.costLevel>=4)return false;
+  return true;}
 
-function renderQ() {
-  const q = QUESTIONS[currentQ];
-  // Auto-skip beachtype if beach=no
-  if (q.id === 'beachtype' && answers.beach === 'no') { answers.beachtype = 'any'; currentQ++; renderQ(); return; }
+function scoreCity(c){let s=0;
+  const nl=answers.nightlife||[];
+  if(nl.includes('ibiza'))s+=c.nightlife===5?18:c.nightlife===4?10:2;
+  if(nl.includes('active'))s+=c.nightlife>=4?15:c.nightlife===3?8:2;
+  if(nl.includes('chill'))s+=c.nightlife<=3?12:4;
+  if(nl.includes('quiet'))s+=c.nightlife<=2?12:c.nightlife===3?5:0;
+  if(!nl.length)s+=8;
+  const vi=answers.vibe||[];
+  if(vi.includes('beach')&&c.beach)s+=12;if(vi.includes('city')&&c.culture>=4)s+=12;
+  if(vi.includes('party')&&c.nightlife>=4)s+=12;if(vi.includes('nature')&&c.beauty>=4)s+=10;
+  if(vi.includes('food')&&(c.culture>=3||['barcelona','valencia','sansebastian','rome','lisbon','lagos'].includes(c.id)))s+=10;
+  if(vi.includes('romance')&&c.beauty>=4)s+=10;if(!vi.length)s+=8;
+  const cu=answers.culture;if(cu==='yes')s+=c.culture*3;else if(cu==='bit')s+=c.culture>=3?10:5;else if(cu==='no')s+=c.culture<=2?10:3;else s+=7;
+  const t=c.tempAug;if(answers.temp==='mild')s+=t<=27?12:t<=29?5:0;else if(answers.temp==='warm')s+=(t>=27&&t<=31)?12:4;else if(answers.temp==='hot')s+=t>=31?12:t>=29?6:1;else s+=6;
+  const b=answers.budget;if(b==='low')s+=(5-c.costLevel)*3;else if(b==='high')s+=c.costLevel>=3?8:4;else s+=6;
+  const sz=answers.size||[];if(sz.includes('small')&&(c.size==='small'||c.size==='village'))s+=10;if(sz.includes('medium')&&c.size==='medium')s+=10;if(sz.includes('large')&&c.size==='large')s+=10;if(sz.includes('any')||!sz.length)s+=6;
+  const du=answers.dutch;if(du==='love')s+=c.dutch*2;else if(du==='avoid')s+=(5-c.dutch)*2;else s+=5;
+  const av=answers.avoid||[];if(av.includes('crowds')&&c.dutch>=4)s-=10;if(av.includes('noparty')&&c.nightlife>=4)s-=10;if(av.includes('cold')&&c.tempAug<25)s-=8;
+  s+=c.beauty*2;
+  const lk=roundLikes[c.id]||{};if(lk.overview)s+=12;if(lk.beach)s+=12;if(lk.vibe)s+=12;
+  return Math.min(99,Math.max(1,s));}
 
-  document.getElementById('prog-fill').style.width = ((currentQ / QUESTIONS.length) * 100) + '%';
-  const nb = document.getElementById('btn-next');
-  const hasAnswer = q.multi ? (answers[q.id]?.length > 0) : !!answers[q.id];
-  nb.disabled = !hasAnswer;
-  nb.textContent = currentQ === QUESTIONS.length - 1 ? 'Naar swipen 👇' : 'Volgende →';
+function beginSwipeFlow(){
+  activeCities=CITIES.filter(hardFilter);
+  for(let i=activeCities.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[activeCities[i],activeCities[j]]=[activeCities[j],activeCities[i]];}
+  roundLikes={};activeCities.forEach(c=>roundLikes[c.id]={});currentRound=0;startRound();}
 
-  document.getElementById('q-container').innerHTML = `
-    <div class="q-step">Vraag ${currentQ+1} / ${QUESTIONS.length}</div>
-    <div class="q-title">${q.title}</div>
-    <div class="q-sub">${q.sub}</div>
-    ${q.multi ? '<div class="multi-hint">✦ Meerdere keuzes mogelijk</div>' : ''}
-    <div class="options-grid" id="opts"></div>`;
+function startRound(){
+  const round=ROUNDS[currentRound];swipeQueue=activeCities.map(c=>({city:c,round}));swipeIdx=0;
+  document.getElementById('swipe-title').textContent=ROUND_NAMES[currentRound];
+  document.getElementById('swipe-sub').textContent=ROUND_DESCS[currentRound];
+  document.getElementById('round-info').textContent=`Ronde ${currentRound+1}/3 • ${activeCities.length} steden`;
+  show('s-swipe');loadSwipeCard();if(!dragInited){initDrag();dragInited=true;}
+  swipeQueue.slice(0,3).forEach(item=>getCityRoundPhoto(item.city,item.round));}
 
-  const grid = document.getElementById('opts');
-  q.options.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.className = 'opt-btn';
-    const sel = q.multi ? (answers[q.id] || []).includes(opt.v) : answers[q.id] === opt.v;
-    if (sel) btn.classList.add('selected');
-    btn.innerHTML = `<span style="font-size:1.05rem">${opt.icon}</span> ${opt.l}`;
-    btn.onclick = () => {
-      if (q.multi) {
-        if (!answers[q.id]) answers[q.id] = [];
-        const idx = answers[q.id].indexOf(opt.v);
-        if (idx >= 0) { answers[q.id].splice(idx, 1); btn.classList.remove('selected'); }
-        else { answers[q.id].push(opt.v); btn.classList.add('selected'); }
-        nb.disabled = answers[q.id].length === 0;
-      } else {
-        answers[q.id] = opt.v;
-        document.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('selected'));
-        btn.classList.add('selected');
-        nb.disabled = false;
-      }
-    };
-    grid.appendChild(btn);
-  });
-}
+function loadSwipeCard(){
+  if(swipeIdx>=swipeQueue.length){finishRound();return;}
+  const{city,round}=swipeQueue[swipeIdx];
+  document.getElementById('swipe-prog').textContent=`${swipeIdx+1} / ${swipeQueue.length}`;
+  const card=document.getElementById('swipe-card');card.style.transform='';card.classList.remove('out-left','out-right','animating');
+  document.getElementById('like-ov').classList.remove('show');document.getElementById('nope-ov').classList.remove('show');
+  document.getElementById('card-vibe').textContent=city.vibes;document.getElementById('card-desc').textContent=city.desc;
+  document.getElementById('photo-badge').textContent=round==='overview'?'🏙️ Overzicht':round==='beach'?'🏖️ Strand':'🌙 Vibe';
+  const ph=document.getElementById('card-emoji');ph.textContent=city.emoji;ph.style.display='flex';ph.style.opacity='1';
+  const img=document.getElementById('card-photo');img.src='';img.className='card-photo';
+  const ci=swipeIdx;getCityRoundPhoto(city,round).then(src=>{if(src&&swipeIdx===ci){img.onload=()=>{img.classList.add('loaded');ph.style.opacity='0';};img.src=src;}});
+  if(swipeIdx+1<swipeQueue.length)getCityRoundPhoto(swipeQueue[swipeIdx+1].city,round);
+  if(swipeIdx+2<swipeQueue.length)getCityRoundPhoto(swipeQueue[swipeIdx+2].city,round);}
 
-function nextQ() {
-  const q = QUESTIONS[currentQ];
-  const hasAnswer = q.multi ? (answers[q.id]?.length > 0) : !!answers[q.id];
-  if (!hasAnswer) return;
-  if (currentQ < QUESTIONS.length - 1) { currentQ++; renderQ(); }
-  else { buildSwipeQueue(); startSwipe(); }
-}
-function prevQ() { if (currentQ > 0) { currentQ--; renderQ(); } else show('s-hero'); }
-function skipToSwipe() { buildSwipeQueue(); startSwipe(); }
+function doSwipe(liked){if(swipeIdx>=swipeQueue.length)return;const{city,round}=swipeQueue[swipeIdx];roundLikes[city.id][round]=liked;
+  const card=document.getElementById('swipe-card');card.classList.add('animating',liked?'out-right':'out-left');setTimeout(()=>{swipeIdx++;loadSwipeCard();},300);}
 
-// ============================================================
-// FILTER & SCORE
-// ============================================================
-function hardFilter(c) {
-  if (answers.travel === 'car') { if (c.island) return false; if (!c.canDrive || c.driveH > 15) return false; }
-  if (answers.beach === 'must' && !c.beach) return false;
-  if (answers.beach !== 'no' && answers.beachtype === 'sand' && c.beach && (c.beachType === 'pebble' || c.beachType === 'rocky')) return false;
-  if (answers.island === 'island' && !c.island) return false;
-  if (answers.island === 'mainland' && c.island) return false;
-  const avoid = answers.avoid || [];
-  if (avoid.includes('far') && c.flyH > 3) return false;
-  if (avoid.includes('expensive') && c.costLevel >= 4) return false;
-  return true;
-}
+function finishRound(){
+  const round=ROUNDS[currentRound];const before=activeCities.length;
+  const liked=activeCities.filter(c=>roundLikes[c.id][round]);const elim=activeCities.filter(c=>!roundLikes[c.id][round]);
+  if(liked.length>=3)activeCities=liked;else if(liked.length>0)activeCities=liked;
+  const after=activeCities.length;
+  document.getElementById('round-title').textContent=currentRound<2?`Ronde ${currentRound+1} klaar!`:'Alle rondes klaar!';
+  document.getElementById('round-stats').innerHTML=`<b>${before}</b> steden geswiped<br>${liked.length>0?`<b>${liked.length}</b> ❤️ geliked`:'Geen geliked — alle gaan door'}`;
+  document.getElementById('elim-list').innerHTML=elim.length&&after<before?elim.map(c=>`<div class="elim-city"><span class="x">✕</span> ${c.flag} ${c.name}</div>`).join(''):'';
+  document.getElementById('survived-count').textContent=`${after} steden gaan door ${currentRound<2?'naar ronde '+(currentRound+2):'naar resultaten'}`;
+  const btn=document.getElementById('round-btn');btn.textContent=currentRound<2?`Ronde ${currentRound+2}: ${ROUND_NAMES[currentRound+1]} →`:'Bekijk resultaten →';
+  show('s-round');}
 
-function scoreCity(c) {
-  let s = 0;
-  // Nightlife (multi-select)
-  const nl = answers.nightlife || [];
-  if (nl.includes('ibiza')) s += c.nightlife === 5 ? 18 : c.nightlife === 4 ? 10 : 2;
-  if (nl.includes('active')) s += c.nightlife >= 4 ? 15 : c.nightlife === 3 ? 8 : 2;
-  if (nl.includes('chill')) s += c.nightlife <= 3 ? 12 : 4;
-  if (nl.includes('quiet')) s += c.nightlife <= 2 ? 12 : c.nightlife === 3 ? 5 : 0;
-  if (!nl.length) s += 8;
+function nextRound(){currentRound++;if(currentRound<3)startRound();else{show('s-loading');setTimeout(showResults,700);}}
 
-  // Vibe (multi-select)
-  const vibe = answers.vibe || [];
-  if (vibe.includes('beach') && c.beach) s += 12;
-  if (vibe.includes('city') && c.culture >= 4) s += 12;
-  if (vibe.includes('party') && c.nightlife >= 4) s += 12;
-  if (vibe.includes('nature') && c.beauty >= 4) s += 10;
-  if (vibe.includes('food') && (c.culture >= 3 || ['barcelona','valencia','sansebastian','rome','lisbon'].includes(c.id))) s += 10;
-  if (vibe.includes('romance') && c.beauty >= 4) s += 10;
-  if (!vibe.length) s += 8;
+function initDrag(){
+  const card=document.getElementById('swipe-card'),lo=document.getElementById('like-ov'),no=document.getElementById('nope-ov');
+  function onMove(x){dragX=x-dragStartX;card.style.transform=`translateX(${dragX}px) rotate(${dragX*.03}deg)`;
+    if(dragX>40){lo.classList.add('show');no.classList.remove('show');}else if(dragX<-40){no.classList.add('show');lo.classList.remove('show');}else{lo.classList.remove('show');no.classList.remove('show');}}
+  function onEnd(){if(!dragging)return;dragging=false;if(Math.abs(dragX)>80)doSwipe(dragX>0);else{card.style.transform='';lo.classList.remove('show');no.classList.remove('show');}dragX=0;}
+  card.addEventListener('touchstart',e=>{dragStartX=e.touches[0].clientX;dragging=true;dragX=0;},{passive:true});
+  card.addEventListener('touchmove',e=>{if(dragging)onMove(e.touches[0].clientX);},{passive:true});
+  card.addEventListener('touchend',onEnd);
+  card.addEventListener('mousedown',e=>{dragStartX=e.clientX;dragging=true;dragX=0;});
+  document.addEventListener('mousemove',e=>{if(dragging)onMove(e.clientX);});
+  document.addEventListener('mouseup',onEnd);}
 
-  // Culture
-  const cu = answers.culture;
-  if (cu === 'yes') s += c.culture * 3;
-  else if (cu === 'bit') s += c.culture >= 3 ? 10 : 5;
-  else if (cu === 'no') s += c.culture <= 2 ? 10 : 3;
-  else s += 7;
-
-  // Temp
-  const t = c.tempAug;
-  if (answers.temp === 'mild') s += t <= 27 ? 12 : t <= 29 ? 5 : 0;
-  else if (answers.temp === 'warm') s += (t >= 27 && t <= 31) ? 12 : 4;
-  else if (answers.temp === 'hot') s += t >= 31 ? 12 : t >= 29 ? 6 : 1;
-  else s += 6;
-
-  // Budget
-  const b = answers.budget;
-  if (b === 'low') s += (5 - c.costLevel) * 3;
-  else if (b === 'high') s += c.costLevel >= 3 ? 8 : 4;
-  else s += 6;
-
-  // Size (multi)
-  const sz = answers.size || [];
-  if (sz.includes('small') && (c.size === 'small' || c.size === 'village')) s += 10;
-  if (sz.includes('medium') && c.size === 'medium') s += 10;
-  if (sz.includes('large') && c.size === 'large') s += 10;
-  if (sz.includes('any') || !sz.length) s += 6;
-
-  // Dutch
-  const du = answers.dutch;
-  if (du === 'love') s += c.dutch * 2;
-  else if (du === 'avoid') s += (5 - c.dutch) * 2;
-  else s += 5;
-
-  // Avoid
-  const av = answers.avoid || [];
-  if (av.includes('crowds') && c.dutch >= 4) s -= 10;
-  if (av.includes('noparty') && c.nightlife >= 4) s -= 10;
-  if (av.includes('cold') && c.tempAug < 25) s -= 8;
-
-  // Beauty bonus
-  s += c.beauty * 2;
-
-  // Swipe bonus
-  if (likedCities.has(c.id)) s += 30;
-
-  return Math.min(99, Math.max(1, s));
-}
-
-// ============================================================
-// SWIPE — 3x per city, different photo each time
-// ============================================================
-function buildSwipeQueue() {
-  const eligible = CITIES.filter(hardFilter);
-  swipeQueue = [];
-  eligible.forEach(c => {
-    for (let i = 0; i < 3; i++) swipeQueue.push({city: c, slot: i});
-  });
-  // Interleave: all slot-0 first, then slot-1, then slot-2
-  const bySlot = [[],[],[]];
-  swipeQueue.forEach(item => bySlot[item.slot].push(item));
-  bySlot.forEach(arr => { for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];} });
-  swipeQueue = [];
-  const max = Math.max(...bySlot.map(a=>a.length));
-  for(let i=0;i<max;i++) bySlot.forEach(arr => { if(arr[i]) swipeQueue.push(arr[i]); });
-}
-
-function startSwipe() {
-  likedCities.clear(); swipeIdx = 0;
-  show('s-swipe'); loadSwipeCard(); initDrag();
-}
-
-function loadSwipeCard() {
-  if (swipeIdx >= swipeQueue.length) { finishSwipe(); return; }
-  const {city, slot} = swipeQueue[swipeIdx];
-  document.getElementById('swipe-prog').textContent = `${swipeIdx+1} / ${swipeQueue.length} — foto ${slot+1}/3`;
-
-  const card = document.getElementById('swipe-card');
-  card.style.transform = '';
-  card.classList.remove('out-left','out-right','animating');
-  document.getElementById('like-ov').classList.remove('show');
-  document.getElementById('nope-ov').classList.remove('show');
-
-  document.getElementById('card-vibe').textContent = city.vibes;
-  document.getElementById('card-desc').textContent = city.desc;
-  document.getElementById('photo-badge').textContent = city.photoLabels[slot] || 'Foto';
-
-  const ph = document.getElementById('card-emoji');
-  ph.textContent = city.emoji; ph.style.display = 'flex'; ph.style.opacity = '1';
-  const img = document.getElementById('card-photo');
-  img.src = ''; img.className = 'card-photo';
-
-  const currentIdx = swipeIdx;
-  loadPhoto(city, slot).then(src => {
-    if (src && swipeIdx === currentIdx) {
-      img.onload = () => { img.classList.add('loaded'); ph.style.opacity = '0'; };
-      img.onerror = () => {};
-      img.src = src;
-    }
-  });
-
-  // Preload next
-  if (swipeIdx + 1 < swipeQueue.length) {
-    const next = swipeQueue[swipeIdx + 1];
-    getCityPhotos(next.city);
-  }
-}
-
-function doSwipe(liked) {
-  if (swipeIdx >= swipeQueue.length) return;
-  const {city} = swipeQueue[swipeIdx];
-  if (liked) likedCities.add(city.id);
-  const card = document.getElementById('swipe-card');
-  card.classList.add('animating', liked ? 'out-right' : 'out-left');
-  setTimeout(() => { swipeIdx++; loadSwipeCard(); }, 330);
-}
-
-function initDrag() {
-  const card = document.getElementById('swipe-card');
-  const likeOv = document.getElementById('like-ov');
-  const nopeOv = document.getElementById('nope-ov');
-
-  function onMove(x) {
-    dragX = x - dragStartX;
-    card.style.transform = `translateX(${dragX}px) rotate(${dragX*0.03}deg)`;
-    if (dragX > 40) { likeOv.classList.add('show'); nopeOv.classList.remove('show'); }
-    else if (dragX < -40) { nopeOv.classList.add('show'); likeOv.classList.remove('show'); }
-    else { likeOv.classList.remove('show'); nopeOv.classList.remove('show'); }
-  }
-  function onEnd() {
-    if (!dragging) return; dragging = false;
-    if (Math.abs(dragX) > 80) doSwipe(dragX > 0);
-    else { card.style.transform = ''; likeOv.classList.remove('show'); nopeOv.classList.remove('show'); }
-    dragX = 0;
-  }
-  card.addEventListener('touchstart', e => { dragStartX = e.touches[0].clientX; dragging = true; dragX = 0; }, {passive:true});
-  card.addEventListener('touchmove', e => { if(dragging) onMove(e.touches[0].clientX); }, {passive:true});
-  card.addEventListener('touchend', onEnd);
-  card.addEventListener('mousedown', e => { dragStartX = e.clientX; dragging = true; dragX = 0; });
-  document.addEventListener('mousemove', e => { if(dragging) onMove(e.clientX); });
-  document.addEventListener('mouseup', onEnd);
-}
-
-function finishSwipe() { show('s-loading'); setTimeout(showResults, 700); }
-
-// ============================================================
-// RESULTS
-// ============================================================
-function showResults() {
-  const eligible = CITIES.filter(hardFilter);
-  const scored = eligible.map(c => ({...c, score: scoreCity(c)})).sort((a,b) => b.score - a.score);
-
-  document.getElementById('r-title').textContent = `${scored.length} steden matchen`;
-  document.getElementById('verdict').textContent =
-    `${CITIES.length - eligible.length} steden vallen af op basis van jullie criteria. ` +
-    (likedCities.size ? `Jullie lieten ❤️ op ${likedCities.size} steden — die krijgen een bonus.` : '');
-
+function showResults(){
+  const scored=activeCities.map(c=>({...c,score:scoreCity(c)})).sort((a,b)=>b.score-a.score);
+  document.getElementById('r-title').textContent=`Top ${scored.length} matches`;
+  document.getElementById('verdict').textContent=`Van ${CITIES.length} steden zijn er ${CITIES.length-activeCities.length} afgevallen in 3 rondes.`;
   show('s-results');
+  const mapEl=document.getElementById('map');mapEl.style.display='block';
+  if(leafletMap){try{leafletMap.remove();}catch(e){}leafletMap=null;}
+  setTimeout(()=>{leafletMap=L.map('map',{scrollWheelZoom:false});
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© OSM © CARTO',subdomains:'abcd',maxZoom:19}).addTo(leafletMap);
+    scored.forEach((c,i)=>{const icon=L.divIcon({html:`<div style="background:${i<3?'#C05A30':'rgba(18,16,14,.92)'};color:${i<3?'#fff':'#F0E6D3'};padding:3px 9px;font-family:'DM Sans',sans-serif;font-size:11px;white-space:nowrap;border:1px solid ${i<3?'#C05A30':'rgba(240,230,211,.15)'};box-shadow:0 4px 16px rgba(0,0,0,.5);border-radius:3px;">${c.name} ${c.score}%</div>`,className:'',iconAnchor:[0,20]});
+      L.marker([c.lat,c.lng],{icon}).addTo(leafletMap).bindPopup(`<b>${c.emoji} ${c.name}</b><br><span style="color:#C05A30">${c.score}% match</span>`).on('click',()=>openModal(c));});
+    if(scored.length)leafletMap.fitBounds(scored.map(c=>[c.lat,c.lng]),{padding:[40,40]});},300);
+  const grid=document.getElementById('results-grid');grid.innerHTML='';
+  scored.forEach((c,i)=>{const lk=roundLikes[c.id]||{};const hearts=[lk.overview?'🏙️':'',lk.beach?'🏖️':'',lk.vibe?'🌙':''].filter(Boolean).join('');
+    const card=document.createElement('div');card.className='city-card';
+    card.innerHTML=`<div class="ccard-img"><div class="ccard-img-ph">${c.emoji}</div><img alt="${c.name}"><div class="card-rank">${i+1}</div><div class="card-score">${c.score}%</div>${hearts?`<div class="card-liked">${hearts}</div>`:''}</div><div class="ccard-body"><div class="ccard-country">${c.flag} ${c.country}</div><div class="ccard-name">${c.name}</div><div class="ccard-desc">${c.desc.substring(0,110)}...</div><div class="ccard-stats"><div class="stat">🌙 <b>${stars(c.nightlife)}</b></div><div class="stat">🌡️ <b>${c.tempAug}°C</b></div><div class="stat">🏛️ <b>${stars(c.culture)}</b></div><div class="stat">✈️ <b>${c.flyH}u</b></div><div class="stat">💰 <b>${costLbl(c.costLevel)}</b></div><div class="stat">🏖️ <b>${beachLbl(c.beachType)}</b></div></div></div>`;
+    const img=card.querySelector('img');getCityRoundPhoto(c,'overview').then(src=>{if(src){img.onload=()=>img.classList.add('loaded');img.src=src;}});
+    card.addEventListener('click',()=>openModal(c));grid.appendChild(card);});}
 
-  const mapEl = document.getElementById('map');
-  mapEl.style.display = 'block';
-  if (leafletMap) { try{leafletMap.remove();}catch(e){} leafletMap = null; }
-  setTimeout(() => {
-    leafletMap = L.map('map', {scrollWheelZoom:false});
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',
-      {attribution:'© OpenStreetMap © CARTO', subdomains:'abcd', maxZoom:19}).addTo(leafletMap);
-    scored.forEach((c, i) => {
-      const icon = L.divIcon({html:`<div style="background:${i<3?'#C05A30':'rgba(18,16,14,.92)'};color:${i<3?'#fff':'#F0E6D3'};padding:3px 9px;font-family:'DM Sans',sans-serif;font-size:11px;white-space:nowrap;border:1px solid ${i<3?'#C05A30':'rgba(240,230,211,.15)'};box-shadow:0 4px 16px rgba(0,0,0,.5);">${likedCities.has(c.id)?'❤️ ':''}${c.name} ${c.score}%</div>`,className:'',iconAnchor:[0,20]});
-      L.marker([c.lat,c.lng],{icon}).addTo(leafletMap)
-        .bindPopup(`<b>${c.emoji} ${c.name}</b><br><span style="color:#C05A30">${c.score}% match</span>`)
-        .on('click', () => openModal(c));
-    });
-    if (scored.length) leafletMap.fitBounds(scored.map(c=>[c.lat,c.lng]), {padding:[40,40]});
-  }, 300);
+function stars(n){return'★'.repeat(n)+'☆'.repeat(5-n);}
+function costLbl(l){return'€'.repeat(l);}
+function beachLbl(t){return{sand:'Zand',pebble:'Kei',rocky:'Rots',mixed:'Mix',none:'Geen'}[t]||t;}
+function dutchLbl(l){return{1:'Zeer weinig',2:'Weinig',3:'Gemiddeld',4:'Veel',5:'Overal'}[l]||'';}
 
-  const grid = document.getElementById('results-grid');
-  grid.innerHTML = '';
-  scored.forEach((c, i) => {
-    const card = document.createElement('div');
-    card.className = 'city-card';
-    const liked = likedCities.has(c.id);
-    card.innerHTML = `
-      <div class="ccard-img">
-        <div class="ccard-img-ph">${c.emoji}</div>
-        <img alt="${c.name}">
-        <div class="card-rank">${i+1}</div>
-        <div class="card-score">${c.score}%</div>
-        ${liked ? '<div class="card-liked">❤️</div>' : ''}
-      </div>
-      <div class="ccard-body">
-        <div class="ccard-country">${c.flag} ${c.country}</div>
-        <div class="ccard-name">${c.name}</div>
-        <div class="ccard-desc">${c.desc.substring(0,110)}...</div>
-        <div class="ccard-stats">
-          <div class="stat">🌙 <b>${stars(c.nightlife)}</b></div>
-          <div class="stat">🌡️ <b>${c.tempAug}°C</b></div>
-          <div class="stat">🏛️ <b>${stars(c.culture)}</b></div>
-          <div class="stat">✈️ <b>${c.flyH}u</b></div>
-          <div class="stat">💰 <b>${costLbl(c.costLevel)}</b></div>
-          <div class="stat">🏖️ <b>${beachLbl(c.beachType)}</b></div>
-        </div>
-      </div>`;
-    const img = card.querySelector('img');
-    loadPhoto(c, 0).then(src => { if(src){img.style.display='block';img.onload=()=>img.classList.add('loaded');img.src=src;} });
-    card.addEventListener('click', () => openModal(c));
-    grid.appendChild(card);
-  });
-}
+function openModal(city){modalCity=city;galleryIdx=0;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';buildGallery(city);buildModalBody(city);}
+function buildGallery(city){
+  const sl=document.getElementById('gallery-slides'),dots=document.getElementById('gallery-dots');
+  sl.innerHTML=`<div class="gallery-slide"><div class="slide-ph">${city.emoji}</div></div>`;dots.innerHTML='';sl.style.transform='translateX(0)';
+  getCityAllPhotos(city).then(all=>{const c=Math.max(all.length,1);sl.innerHTML='';dots.innerHTML='';
+    const lb=city.photoLabels||['Overzicht','Strand','Vibe'];
+    for(let i=0;i<c;i++){const s=document.createElement('div');s.className='gallery-slide';
+      const ph=document.createElement('div');ph.className='slide-ph';ph.textContent=city.emoji;
+      const img=document.createElement('img');const l=document.createElement('div');l.className='gallery-lbl';l.textContent=lb[i]||`Foto ${i+1}`;
+      s.appendChild(ph);s.appendChild(img);s.appendChild(l);sl.appendChild(s);
+      if(all[i]){img.onload=()=>{img.classList.add('loaded');ph.style.opacity='.2';};img.src=all[i];}
+      const d=document.createElement('div');d.className='gallery-dot'+(i===0?' active':'');const idx=i;d.onclick=()=>goToSlide(idx);dots.appendChild(d);}});}
+function galleryNav(dir){const t=document.querySelectorAll('.gallery-slide').length||3;galleryIdx=(galleryIdx+dir+t)%t;goToSlide(galleryIdx);}
+function goToSlide(i){galleryIdx=i;document.getElementById('gallery-slides').style.transform=`translateX(-${i*100}%)`;document.querySelectorAll('.gallery-dot').forEach((d,j)=>d.classList.toggle('active',j===i));}
+function closeModal(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';modalCity=null;}
 
-// ============================================================
-// HELPER FUNCTIONS
-// ============================================================
-function stars(n) {
-  return '★'.repeat(n) + '☆'.repeat(5-n);
-}
-
-function costLbl(level) {
-  return '€'.repeat(level);
-}
-
-function beachLbl(type) {
-  const labels = { sand:'Zand', pebble:'Kei', rocky:'Rots', mixed:'Mix', none:'Geen' };
-  return labels[type] || type;
-}
-
-function dutchLbl(level) {
-  const labels = { 1:'Zeer weinig', 2:'Weinig', 3:'Gemiddeld', 4:'Veel', 5:'Overal' };
-  return labels[level] || '';
-}
-
-// ============================================================
-// MODAL
-// ============================================================
-function openModal(city) {
-  modalCity = city; galleryIdx = 0;
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  buildGallery(city); buildModalBody(city);
-}
-
-function buildGallery(city) {
-  const slides = document.getElementById('gallery-slides');
-  const dots = document.getElementById('gallery-dots');
-  slides.innerHTML = `<div class="gallery-slide"><div class="slide-ph">${city.emoji}</div></div>`;
-  dots.innerHTML = ''; slides.style.transform = 'translateX(0)';
-
-  getCityPhotos(city).then(allPhotos => {
-    const count = Math.min(Math.max(allPhotos.length, 1), 3);
-    slides.innerHTML = ''; dots.innerHTML = '';
-    for (let i = 0; i < count; i++) {
-      const slide = document.createElement('div'); slide.className = 'gallery-slide';
-      const ph = document.createElement('div'); ph.className = 'slide-ph'; ph.textContent = city.emoji;
-      const img = document.createElement('img');
-      const lbl = document.createElement('div'); lbl.className = 'gallery-lbl';
-      lbl.textContent = city.photoLabels[i] || `Foto ${i+1}`;
-      slide.appendChild(ph); slide.appendChild(img); slide.appendChild(lbl);
-      slides.appendChild(slide);
-      if (allPhotos[i]) {
-        img.onload = () => { img.classList.add('loaded'); ph.style.opacity = '0.2'; };
-        img.src = allPhotos[i];
-      }
-      const dot = document.createElement('div'); dot.className = 'gallery-dot' + (i===0?' active':'');
-      const idx = i; dot.onclick = () => goToSlide(idx);
-      dots.appendChild(dot);
-    }
-  });
-}
-
-function galleryNav(dir) {
-  const total = document.querySelectorAll('.gallery-slide').length || 3;
-  galleryIdx = (galleryIdx + dir + total) % total;
-  goToSlide(galleryIdx);
-}
-function goToSlide(idx) {
-  galleryIdx = idx;
-  document.getElementById('gallery-slides').style.transform = `translateX(-${idx*100}%)`;
-  document.querySelectorAll('.gallery-dot').forEach((d,i) => d.classList.toggle('active', i===idx));
-}
-function closeModal() {
-  document.getElementById('modal').classList.remove('open');
-  document.body.style.overflow = ''; modalCity = null;
-}
-
-function buildModalBody(c) {
-  const liked = likedCities.has(c.id);
-  const pips = Array.from({length:5},(_,i)=>`<div class="cost-pip${i<c.costLevel?' on':''}"></div>`).join('');
-  const score = scoreCity(c);
-
-  document.getElementById('modal-body').innerHTML = `
-    <div class="modal-flag">${c.flag}</div>
-    <div class="modal-country">${c.country}</div>
-    <div class="modal-name">${c.name}</div>
-    ${liked ? '<div class="modal-like">❤️ Jullie liketen deze stad</div>' : ''}
+function buildModalBody(c){
+  const lk=roundLikes[c.id]||{};const lr=[lk.overview?'🏙️ Plek':'',lk.beach?'🏖️ Strand':'',lk.vibe?'🌙 Vibe':''].filter(Boolean);
+  const pips=Array.from({length:5},(_,i)=>`<div class="cost-pip${i<c.costLevel?' on':''}"></div>`).join('');const sc=scoreCity(c);
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-flag">${c.flag}</div><div class="modal-country">${c.country}</div><div class="modal-name">${c.name}</div>
+    ${lr.length?`<div class="modal-like">❤️ Geliked: ${lr.join(' • ')}</div>`:''}
     <div class="modal-desc">${c.desc}</div>
-
     <div class="mstats">
-      <div class="mstat">
-        <div class="mstat-label">Match Score</div>
-        <div class="mstat-val">${score}%</div>
-        <div class="mstat-sub">${score >= 80 ? 'Uitstekende match!' : score >= 60 ? 'Goede match' : 'Matige match'}</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-label">Temperatuur aug.</div>
-        <div class="mstat-val">${c.tempAug}°C</div>
-        <div class="mstat-sub">${c.tempAug >= 31 ? 'Erg warm' : c.tempAug >= 28 ? 'Lekker warm' : 'Aangenaam'}</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-label">Nachtleven</div>
-        <div class="mstat-val"><span class="stars">${stars(c.nightlife)}</span></div>
-        <div class="mstat-sub">${c.nightlife >= 4 ? 'Levendig' : c.nightlife >= 3 ? 'Gezellig' : 'Rustig'}</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-label">Cultuur</div>
-        <div class="mstat-val"><span class="stars">${stars(c.culture)}</span></div>
-        <div class="mstat-sub">${c.culture >= 4 ? 'Rijk & divers' : c.culture >= 3 ? 'Voldoende' : 'Beperkt'}</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-label">Vliegen</div>
-        <div class="mstat-val">${c.flyH} uur</div>
-        <div class="mstat-sub">${c.canDrive ? `Auto: ${c.driveH}u` : 'Alleen vliegen'}</div>
-      </div>
-      <div class="mstat">
-        <div class="mstat-label">Prijsniveau</div>
-        <div class="mstat-val">${costLbl(c.costLevel)}</div>
-        <div class="cost-pips">${pips}</div>
-      </div>
+      <div class="mstat"><div class="mstat-label">Match Score</div><div class="mstat-val">${sc}%</div><div class="mstat-sub">${sc>=80?'Uitstekend!':sc>=60?'Goede match':'Matig'}</div></div>
+      <div class="mstat"><div class="mstat-label">Temperatuur aug.</div><div class="mstat-val">${c.tempAug}°C</div><div class="mstat-sub">${c.tempAug>=31?'Erg warm':c.tempAug>=28?'Lekker warm':'Aangenaam'}</div></div>
+      <div class="mstat"><div class="mstat-label">Nachtleven</div><div class="mstat-val"><span class="stars">${stars(c.nightlife)}</span></div></div>
+      <div class="mstat"><div class="mstat-label">Cultuur</div><div class="mstat-val"><span class="stars">${stars(c.culture)}</span></div></div>
+      <div class="mstat"><div class="mstat-label">Vliegen</div><div class="mstat-val">${c.flyH}u</div><div class="mstat-sub">${c.canDrive?`Auto: ${c.driveH}u`:'Alleen vliegen'}</div></div>
+      <div class="mstat"><div class="mstat-label">Prijsniveau</div><div class="mstat-val">${costLbl(c.costLevel)}</div><div class="cost-pips">${pips}</div></div>
     </div>
+    <div class="msection"><h4>Stranden</h4><div class="btags">${c.beaches.map(b=>`<span class="btag">🏖️ ${b}</span>`).join('')}</div></div>
+    <div class="msection"><h4>Bekend om</h4><ul class="known-list">${c.known.map(k=>`<li>${k}</li>`).join('')}</ul></div>
+    <div class="msection"><h4>Nederlanders</h4><div style="font-size:.85rem;color:var(--sand);margin-bottom:.3rem">${dutchLbl(c.dutch)}</div><div class="dutch-bar"><div class="dutch-fill" style="width:${c.dutch*20}%"></div></div></div>
+    <div class="msection"><h4>Insider Tips</h4><div class="tips-box">💡 ${c.tips}</div></div>`;}
 
-    <div class="msection">
-      <h4>Stranden</h4>
-      <div class="btags">
-        ${c.beaches.map(b => `<span class="btag">🏖️ ${b}</span>`).join('')}
-      </div>
-    </div>
+function resetApp(){answers={};currentQ=0;currentRound=0;activeCities=[];roundLikes={};swipeQueue=[];swipeIdx=0;
+  if(leafletMap){try{leafletMap.remove();}catch(e){}leafletMap=null;}document.getElementById('results-grid').innerHTML='';document.getElementById('map').style.display='none';show('s-hero');}
 
-    <div class="msection">
-      <h4>Bekend om</h4>
-      <ul class="known-list">
-        ${c.known.map(k => `<li>${k}</li>`).join('')}
-      </ul>
-    </div>
-
-    <div class="msection">
-      <h4>Nederlanders</h4>
-      <div style="font-size:.85rem;color:var(--sand);margin-bottom:.3rem;">${dutchLbl(c.dutch)}</div>
-      <div class="dutch-bar"><div class="dutch-fill" style="width:${c.dutch * 20}%"></div></div>
-    </div>
-
-    <div class="msection">
-      <h4>Insider Tips</h4>
-      <div class="tips-box">💡 ${c.tips}</div>
-    </div>
-  `;
-}
-
-// ============================================================
-// RESET
-// ============================================================
-function resetApp() {
-  answers = {};
-  currentQ = 0;
-  swipeQueue = [];
-  swipeIdx = 0;
-  likedCities.clear();
-  if (leafletMap) { try { leafletMap.remove(); } catch(e) {} leafletMap = null; }
-  document.getElementById('results-grid').innerHTML = '';
-  document.getElementById('map').style.display = 'none';
-  show('s-hero');
-}
-
-// Keyboard support for swipe
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('s-swipe').classList.contains('active')) return;
-  if (e.key === 'ArrowLeft') doSwipe(false);
-  if (e.key === 'ArrowRight') doSwipe(true);
-});
+document.addEventListener('keydown',e=>{if(!document.getElementById('s-swipe').classList.contains('active'))return;if(e.key==='ArrowLeft')doSwipe(false);if(e.key==='ArrowRight')doSwipe(true);});
 </script>
-</body>
-</html>
+</body></html>
+
